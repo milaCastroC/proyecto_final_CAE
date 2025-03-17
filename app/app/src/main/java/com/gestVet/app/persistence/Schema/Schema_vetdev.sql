@@ -87,14 +87,9 @@ CREATE TABLE propietario (
     FOREIGN KEY (cliente_id) REFERENCES cliente(cliente_id)
 );
 
-CREATE TABLE historial_clinico (
-    historial_clinico_id BIGINT AUTO_INCREMENT PRIMARY KEY
-);
-
 CREATE TABLE mascota (
     mascota_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     propietario_id BIGINT,
-    historial_clinico_id BIGINT,
     nombre VARCHAR(100) NOT NULL,
     especie VARCHAR(150) NOT NULL,
     raza VARCHAR(150),
@@ -102,8 +97,13 @@ CREATE TABLE mascota (
     fecha_nacimiento DATETIME,
     edad INT,
     peso DECIMAL(5,2),
-    FOREIGN KEY (propietario_id) REFERENCES propietario(propietario_id),
-    FOREIGN KEY (historial_clinico_id) REFERENCES historial_clinico(historial_clinico_id)
+    FOREIGN KEY (propietario_id) REFERENCES propietario(propietario_id)
+);
+
+CREATE TABLE historial_clinico (
+    historial_clinico_id BIGINT AUTO_INCREMENT PRIMARY key,
+    mascota_id BIGINT,
+    FOREIGN KEY (mascota_id) REFERENCES mascota(mascota_id)
 );
 
 
