@@ -19,7 +19,7 @@ public class Cita {
     @JoinColumn(name = "mascota_id", nullable = false)
     private Mascota mascota;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "horario_id", nullable = false)
     private Horario horario;
 
