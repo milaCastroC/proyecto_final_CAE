@@ -158,3 +158,4 @@ CREATE TABLE cliente_factura (
     FOREIGN KEY (factura_id) REFERENCES factura(factura_id),
     UNIQUE KEY (cliente_id, factura_id)
 );
+
