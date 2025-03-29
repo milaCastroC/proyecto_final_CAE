@@ -4,23 +4,21 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 @Getter
 @Setter
 @Entity
-@Table(name = "propietario")
-public class Propietario {
+@Table(name = "cliente_factura")
+public class ClienteFactura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "propietario_id", nullable = false)
+    @Column(name = "cliente_factura_id", nullable = false)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "propietario")
-    private List<Mascota> mascotas = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "factura_id")
+    private Factura factura;
 }

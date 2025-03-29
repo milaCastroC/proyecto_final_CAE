@@ -1,42 +1,52 @@
-package main.java.com.gestVet.app.persistence.entity;
+package com.gestionvet.gestionvet.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+@Getter
+@Setter
 @Entity
-@Data
 @Table(name = "mascota")
 public class Mascota {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mascota_id")
-    private Long mascotaId;
+    @Column(name = "mascota_id", nullable = false)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "propietario_id", nullable = false)
+    @JoinColumn(name = "propietario_id")
     private Propietario propietario;
 
+    @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
+    @Column(name = "especie", nullable = false, length = 150)
     private String especie;
 
+    @Column(name = "raza", length = 150)
     private String raza;
 
-    @Enumerated(EnumType.STRING)
-    private Sexo sexo;
+    @Column(name = "sexo", nullable = false)
+    private String sexo;
 
-    private LocalDateTime fechaNacimiento;
+    @Column(name = "fecha_nacimiento")
+    private LocalDate fechaNacimiento;
 
+    @Column(name = "edad")
     private Integer edad;
 
-    private Double peso;
-    
-    @OneToOne(mappedBy = "mascota", cascade = CascadeType.ALL)
-    private HistorialClinico historialClinico;
-    
-    public enum Sexo {
-        MACHO, HEMBRA
-    }
+    @Column(name = "peso", precision = 5, scale = 2)
+    private BigDecimal peso;
+
+    @OneToMany(mappedBy = "mascota")
+    private List<Cita> citas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "mascota")
+    private List<HistorialClinico> historialClinicos = new ArrayList<>();
 }

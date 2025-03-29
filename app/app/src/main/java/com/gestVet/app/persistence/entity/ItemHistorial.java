@@ -1,35 +1,40 @@
-package main.java.com.gestVet.app.persistence.entity;
+package com.gestionvet.gestionvet.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
+@Getter
+@Setter
 @Entity
-@Data
 @Table(name = "item_historial")
 public class ItemHistorial {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "item_historial_id")
-    private Long itemHistorialId;
+    @Column(name = "item_historial_id", nullable = false)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "historial_clinico_id", nullable = false)
+    @JoinColumn(name = "historial_clinico_id")
     private HistorialClinico historialClinico;
 
-    @Column(nullable = false)
+    @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "diagnostico", nullable = false)
     private String diagnostico;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "tratamiento", nullable = false)
     private String tratamiento;
 
-    @Column(columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "observaciones")
     private String observaciones;
 
-    @Column(length = 100)
+    @Column(name = "tipos", length = 100)
     private String tipos;
 }

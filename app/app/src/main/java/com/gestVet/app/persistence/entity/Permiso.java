@@ -10,16 +10,16 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "tipo_cita")
-public class TipoCita {
+@Table(name = "permiso")
+public class Permiso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tipo_cita_id", nullable = false)
+    @Column(name = "permiso_id", nullable = false)
     private Long id;
 
-    @Column(name = "nombre", nullable = false, length = 150)
+    @Column(name = "nombre", nullable = false, length = 200)
     private String nombre;
 
-    @OneToMany(mappedBy = "tipoCita")
-    private List<Cita> citas = new ArrayList<>();
+    @OneToMany(mappedBy = "permiso")
+    private List<PrivilegioPermiso> privilegioPermisos = new ArrayList<>();
 }

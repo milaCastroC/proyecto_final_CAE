@@ -1,30 +1,35 @@
-package main.java.com.gestVet.app.persistence.entity;
-
-
+package com.gestionvet.gestionvet.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
-@Data
-
 @Table(name = "usuario")
 public class Usuario {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long usuarioId;
-    
-    @Column(nullable = false, unique = true, length = 50)
+    @Column(name = "usuario_id", nullable = false)
+    private Long id;
+
+    @Column(name = "username", nullable = false, length = 50)
     private String username;
-    
-    @Column(nullable = false, length = 255)
+
+    @Column(name = "password", nullable = false)
     private String password;
-    
-    @Column(nullable = false, length = 20)
+
+    @Column(name = "rol", nullable = false, length = 20)
     private String rol;
-    
+
     @OneToOne
-    @JoinColumn(name = "persona_id", unique = true)
+    @JoinColumn(name = "persona_id")
     private Persona persona;
+
+    @OneToOne(mappedBy = "usuario")
+    private Administrador administrador;
+
+    @OneToOne(mappedBy = "usuario")
+    private Veterinario veterinario;
 }

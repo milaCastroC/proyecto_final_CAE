@@ -1,44 +1,40 @@
-package main.java.com.gestVet.app.persistence.entity;
+package com.gestionvet.gestionvet.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.time.Instant;
+
+@Getter
+@Setter
 @Entity
-@Data
-
 @Table(name = "cita")
 public class Cita {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cita_id")
-    private Long citaId;
+    @Column(name = "cita_id", nullable = false)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "mascota_id", nullable = false)
+    @JoinColumn(name = "mascota_id")
     private Mascota mascota;
 
-    @OneToOne
-    @JoinColumn(name = "horario_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "horario_id")
     private Horario horario;
 
     @ManyToOne
-    @JoinColumn(name = "veterinario_id", nullable = false)
+    @JoinColumn(name = "veterinario_id")
     private Veterinario veterinario;
 
-    @Column(nullable = false)
+    @Column(name = "fecha", nullable = false)
     private LocalDateTime fecha;
 
     @ManyToOne
-    @JoinColumn(name = "tipo_cita_id", nullable = false)
+    @JoinColumn(name = "tipo_cita_id")
     private TipoCita tipoCita;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private EstadoCita estado;
-
-    public enum EstadoCita {
-        ATENDIDA, CONFIRMADA, CANCELADA
-    }
+    @Column(name = "estado", nullable = false)
+    private String estado;
 }

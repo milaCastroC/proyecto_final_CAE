@@ -1,25 +1,35 @@
-package main.java.com.gestVet.app.persistence.entity;
-
+package com.gestionvet.gestionvet.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+@Getter
+@Setter
 @Entity
-@Data
-
 @Table(name = "factura")
 public class Factura {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long facturaId;
-    
+    @Column(name = "factura_id", nullable = false)
+    private Long id;
+
+    @Column(name = "total", nullable = false)
     private Double total;
-    
+
+    @Column(name = "estado", nullable = false, length = 50)
     private String estado;
-    
+
+    @Column(name = "metodo_pago", nullable = false, length = 60)
     private String metodoPago;
-    
+
+    @Column(name = "fecha_emision", nullable = false)
     private LocalDate fechaEmision;
+
+    @OneToMany(mappedBy = "factura")
+    private List<ClienteFactura> clienteFacturas = new ArrayList<>();
 }

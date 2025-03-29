@@ -1,20 +1,24 @@
-package main.java.com.gestVet.app.persistence.entity;
+package com.gestionvet.gestionvet.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
-
-
 @Table(name = "identificacion")
 public class Identificacion {
-
     @Id
-    @Column(name = "numero_identificacion")
-    private Long numeroIdentificacion;
+    @Column(name = "numero_identificacion", nullable = false)
+    private Long id;
 
+    @Column(name = "tipo", nullable = false, length = 50)
     private String tipo;
 
-    private Boolean estado;
+    @Column(name = "estado", nullable = false)
+    private Boolean estado = false;
+
+    @OneToOne(mappedBy = "identificacion")
+    private Persona persona;
 }

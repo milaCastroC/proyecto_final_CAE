@@ -1,24 +1,26 @@
-package main.java.com.gestVet.app.persistence.entity;
+package com.gestionvet.gestionvet.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+@Getter
+@Setter
 @Entity
-@Data
-
 @Table(name = "historial_clinico")
 public class HistorialClinico {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "historial_clinico_id")
-    private Long historialClinicoId;
+    @Column(name = "historial_clinico_id", nullable = false)
+    private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "mascota_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "mascota_id")
     private Mascota mascota;
 
-    @OneToMany(mappedBy = "historialClinico", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ItemHistorial> itemsHistorial;
+    @OneToMany(mappedBy = "historialClinico")
+    private List<ItemHistorial> itemHistorials = new ArrayList<>();
 }
