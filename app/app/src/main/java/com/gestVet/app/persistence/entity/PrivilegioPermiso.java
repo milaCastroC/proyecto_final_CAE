@@ -1,4 +1,4 @@
-package com.gestionvet.gestionvet.persistence.entity;
+package com.gestVet.app.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

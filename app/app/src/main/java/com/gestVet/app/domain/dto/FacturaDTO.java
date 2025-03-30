@@ -1,9 +1,12 @@
 package com.gestVet.app.domain.dto;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDate;
-import java.util.List;
+
+import jakarta.validation.constraints.NotNull;
 
 @Data
 @Getter
@@ -12,16 +15,16 @@ import java.util.List;
 public class FacturaDTO {
     private Long facturaId;
 
-    @NotNull("El total es obligatorio")
+    @NotNull(message = "El total es obligatorio")
     private Double total;
 
-    @NotNull("El estado es obligatorio")
+    @NotNull(message = "El estado es obligatorio")
     private String estado;
 
-    @NotNull("El método de pago es obligatorio")
+    @NotNull(message = "El método de pago es obligatorio")
     private String metodoPago;
 
-    @NotNull("La fecha de emisión es obligatoria")
+    @NotNull(message = "La fecha de emisión es obligatoria")
     private LocalDate fechaEmision;
 
     public FacturaDTO(Long facturaId, Double total, String estado, String metodoPago, LocalDate fechaEmision) {

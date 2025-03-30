@@ -1,6 +1,9 @@
 package com.gestVet.app.domain.dto;
 
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
@@ -10,10 +13,10 @@ import lombok.Setter;
 public class ClienteDTO {
     private Long clienteId;
 
-    @NotNull("La persona es obligatoria")
+    @NotNull(message = "La persona es obligatoria")
     private Long personaId;
 
-    @NotNull("Es obligatorio decir si es o no propietario")
+    @NotNull(message = "Es obligatorio decir si es o no propietario")
     private Boolean esPropietario;
 
     private Long propietarioId; // Opcional, solo si el cliente tiene un propietario asociado

@@ -1,5 +1,11 @@
 package com.gestVet.app.domain.dto;
 
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Data
 @Getter
 @Setter
@@ -7,10 +13,10 @@ package com.gestVet.app.domain.dto;
 public class AdministradorDTO {
     private Long administradorId;
 
-    @NotNull("El usuario es obligatorio")
+    @NotNull(message = "El usuario es obligatorio")
     private Long usuarioId;
 
-    @NotNull("El privilegio es obligatorio")
+    @NotNull(message = "El privilegio es obligatorio")
     private Long privilegioId;
 
     public AdministradorDTO(Long administradorId, Long usuarioId, Long privilegioId) {

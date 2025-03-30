@@ -1,10 +1,15 @@
 package com.gestVet.app.domain.dto;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 @Data
 @Getter
@@ -27,7 +32,7 @@ public class MascotaDTO {
     @NotNull(message = "El sexo es obligatorio")
     private String sexo;
 
-    @Past("La fecha de nacimiento debe ser en el pasado")
+    @Past(message = "La fecha de nacimiento debe ser en el pasado")
     private LocalDate fechaNacimiento;
 
     private Integer edad;

@@ -1,9 +1,14 @@
 package com.gestVet.app.domain.dto;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDateTime;
-import java.util.List;
+
+
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotNull;
 
 @Data
 @Getter

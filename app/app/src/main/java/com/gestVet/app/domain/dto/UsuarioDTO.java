@@ -1,6 +1,9 @@
 package com.gestVet.app.domain.dto;
 
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data

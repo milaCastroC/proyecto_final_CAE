@@ -1,8 +1,14 @@
 package com.gestVet.app.domain.dto;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDateTime;
+
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Data
 @Getter
@@ -11,23 +17,23 @@ import java.time.LocalDateTime;
 public class CitaDTO {
     private Long citaId;
 
-    @NotNull("La mascota es obligatoria")
+    @NotNull(message = "La mascota es obligatoria")
     private Long mascotaId;
 
-    @NotNull("El horario es obligatorio")
+    @NotNull(message = "El horario es obligatorio")
     private Long horarioId;
 
-    @NotNull("El veterinario es obligatorio")
+    @NotNull(message = "El veterinario es obligatorio")
     private Long veterinarioId;
 
-    @NotNull("La fecha es obligatoria")
+    @NotNull(message = "La fecha es obligatoria")
     @Future(message = "La fecha debe ser en el futuro")
     private LocalDateTime fecha;
 
-    @NotNull("El tipo de cita es obligatoria")
+    @NotNull(message = "El tipo de cita es obligatoria")
     private Long tipoCitaId;
 
-    @NotBlank("El estado es obligatorio")
+    @NotBlank(message = "El estado es obligatorio")
     private String estado;
 
     public CitaDTO(Long citaId, Long mascotaId, Long horarioId, Long veterinarioId, LocalDateTime fecha, Long tipoCitaId, String estado) {

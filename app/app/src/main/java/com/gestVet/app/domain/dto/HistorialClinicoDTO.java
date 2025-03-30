@@ -1,8 +1,11 @@
 package com.gestVet.app.domain.dto;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.List;
+
+import jakarta.validation.constraints.NotNull;
 
 @Data
 @Getter
@@ -12,7 +15,7 @@ public class HistorialClinicoDTO {
 
     private Long historialClinicoId;
 
-    @NotNull("La mascota es obligatoria")
+    @NotNull(message = "La mascota es obligatoria")
     private Long mascotaId;
 
     public HistorialClinicoDTO(Long historialClinicoId, Long mascotaId) {

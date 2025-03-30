@@ -1,6 +1,9 @@
 package com.gestVet.app.domain.dto;
 
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
@@ -10,10 +13,10 @@ import lombok.Setter;
 public class ClienteFacturaDTO {
     private Long clienteFacturaId;
 
-    @NotNull("El cliente es obligatorio")
+    @NotNull(message = "El cliente es obligatorio")
     private Long clienteId;
 
-    @NotNull("La factura es obligatoria")
+    @NotNull(message = "La factura es obligatoria")
     private Long facturaId;
 
     public ClienteFacturaDTO(Long clienteFacturaId, Long clienteId, Long facturaId) {
