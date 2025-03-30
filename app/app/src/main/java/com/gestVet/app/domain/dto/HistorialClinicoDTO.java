@@ -1,13 +1,22 @@
-package com.gestionvet.gestionvet.domain.dto;
+package com.gestVet.app.domain.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 import java.util.List;
 
+@Data
 @Getter
 @Setter
+@NoArgsConstructor
 public class HistorialClinicoDTO {
-    private Long id;
+
+    private Long historialClinicoId;
+
+    @NotNull("La mascota es obligatoria")
     private Long mascotaId;
-    private List<Long> itemHistorialIds; // Lista de IDs de los ítems del historial
+
+    public HistorialClinicoDTO(Long historialClinicoId, Long mascotaId) {
+        this.historialClinicoId = historialClinicoId;
+        this.mascotaId = mascotaId;
+    }
 }

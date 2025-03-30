@@ -1,16 +1,29 @@
-package com.gestionvet.gestionvet.domain.dto;
+package com.gestVet.app.domain.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
 @Getter
 @Setter
+@NoArgsConstructor
 public class HorarioDTO {
-    private Long id;
+
+    private Long horarioId;
+
+    @NotNull(message = "La hora de inicio es obligatoria")
+    @Future(message = "La hora de inicio debe ser una fecha futura")
     private LocalDateTime horaInicio;
+
+    @NotNull(message = "La hora de fin es obligatoria")
+    @Future(message = "La hora de fin debe ser una fecha futura")
     private LocalDateTime horaFin;
-    private List<Long> citaIds; // Lista de IDs de citas asociadas
-    private List<Long> veterinarioHorarioIds; // Lista de IDs de veterinarios asociados al horario
+
+    public HorarioDTO(Long horarioId, LocalDateTime horaInicio, LocalDateTime horaFin) {
+        this.horarioId = horarioId;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+    }
 }

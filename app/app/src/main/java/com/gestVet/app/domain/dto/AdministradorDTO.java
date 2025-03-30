@@ -1,12 +1,21 @@
-package com.gestionvet.gestionvet.domain.dto;
+package com.gestVet.app.domain.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-
+@Data
 @Getter
 @Setter
+@NoArgsConstructor
 public class AdministradorDTO {
-    private Long id;
+    private Long administradorId;
+
+    @NotNull("El usuario es obligatorio")
     private Long usuarioId;
+
+    @NotNull("El privilegio es obligatorio")
     private Long privilegioId;
+
+    public AdministradorDTO(Long administradorId, Long usuarioId, Long privilegioId) {
+        this.administradorId = administradorId;
+        this.usuarioId = usuarioId;
+        this.privilegioId = privilegioId;
+    }
 }

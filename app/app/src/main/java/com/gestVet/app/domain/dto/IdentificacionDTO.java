@@ -1,13 +1,28 @@
-package com.gestionvet.gestionvet.domain.dto;
+package com.gestVet.app.domain.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
+@Data
 @Getter
 @Setter
+@NoArgsConstructor
 public class IdentificacionDTO {
-    private Long id;
+    private Long identificacionId;
+
+    @NotNull(message = "El tipo es obligatorio")
     private String tipo;
+
+    @NotNull(message = "El estado es obligatorio")
     private Boolean estado;
-    private Long personaId; 
+
+    @NotNull(message = "La persona es obligatoria")
+    private Long personaId;
+
+    public IdentificacionDTO(Long identificacionId, String tipo, Boolean estado, Long personaId) {
+        this.identificacionId = identificacionId;
+        this.tipo = tipo;
+        this.estado = estado;
+        this.personaId = personaId;
+    }
 }
