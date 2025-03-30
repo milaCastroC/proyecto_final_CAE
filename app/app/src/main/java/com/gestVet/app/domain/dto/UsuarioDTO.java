@@ -23,18 +23,18 @@ public class UsuarioDTO {
     private String rol;
 
     @NotNull(message = "La persona es obligatoria")
-    private PersonaDTO persona;
+    private Long personaId;
 
     private Long administradorId;
 
     private Long veterinarioId;
 
-    public UsuarioDTO(Long usuarioId, String username, String password, String rol, PersonaDTO persona, Long administradorId, Long veterinarioId) {
+    public UsuarioDTO(Long usuarioId, String username, String password, String rol, Long personaId, Long administradorId, Long veterinarioId) {
         this.usuarioId = usuarioId;
         this.username = username;
         this.password = password;
         this.rol = rol;
-        this.persona = persona;
+        this.personaId = personaId;
         this.administradorId = administradorId;
         this.veterinarioId = veterinarioId;
     }

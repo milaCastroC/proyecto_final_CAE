@@ -14,7 +14,7 @@ public class PersonaDTO {
     private Long personaId;
 
     @NotNull(message = "La identificación es obligatoria")
-    private IdentificacionDTO identificacion;
+    private Long identificacion;
 
     @NotNull(message = "El nombre es obligatorio")
     private String nombre;
@@ -32,7 +32,7 @@ public class PersonaDTO {
 
     private Long usuarioId;
 
-    public PersonaDTO(Long personaId, IdentificacionDTO identificacion, String nombre, String apellido, String telefono, String email, String direccion, Long clienteId, Long usuarioId) {
+    public PersonaDTO(Long personaId, Long identificacion, String nombre, String apellido, String telefono, String email, String direccion, Long clienteId, Long usuarioId) {
         this.personaId = personaId;
         this.identificacion = identificacion;
         this.nombre = nombre;

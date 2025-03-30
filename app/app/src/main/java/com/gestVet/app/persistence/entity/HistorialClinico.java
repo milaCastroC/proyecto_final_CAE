@@ -15,7 +15,7 @@ public class HistorialClinico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "historial_clinico_id", nullable = false)
-    private Long historialCLinicoId;
+    private Long historialClinicoId;
 
     @ManyToOne
     @JoinColumn(name = "mascota_id")
