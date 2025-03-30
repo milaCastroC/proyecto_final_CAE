@@ -12,7 +12,7 @@ public class Administrador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "administrador_id", nullable = false)
-    private Long id;
+    private Long administradorId;
 
     @OneToOne
     @JoinColumn(name = "usuario_id")

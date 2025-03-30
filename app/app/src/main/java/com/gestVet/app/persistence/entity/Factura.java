@@ -16,7 +16,7 @@ public class Factura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "factura_id", nullable = false)
-    private Long id;
+    private Long facturaId;
 
     @Column(name = "total", nullable = false)
     private Double total;

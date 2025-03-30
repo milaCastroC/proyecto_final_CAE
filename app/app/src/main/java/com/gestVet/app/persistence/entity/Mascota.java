@@ -17,7 +17,7 @@ public class Mascota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mascota_id", nullable = false)
-    private Long id;
+    private Long mascotaId;
 
     @ManyToOne
     @JoinColumn(name = "propietario_id")

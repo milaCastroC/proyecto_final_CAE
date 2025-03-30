@@ -12,7 +12,7 @@ public class ClienteFactura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cliente_factura_id", nullable = false)
-    private Long id;
+    private Long clienteFacturaId;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")

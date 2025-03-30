@@ -12,7 +12,7 @@ public class VeterinarioHorario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "veterinario_horario_id", nullable = false)
-    private Long id;
+    private Long veterinarioHorarioId;
 
     @ManyToOne
     @JoinColumn(name = "veterinario_id")

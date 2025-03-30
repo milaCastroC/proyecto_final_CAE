@@ -12,7 +12,7 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "persona_id", nullable = false)
-    private Long id;
+    private Long personaId;
 
     @OneToOne
     @JoinColumn(name = "identificacion_id")

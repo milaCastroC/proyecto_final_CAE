@@ -16,7 +16,7 @@ public class Horario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "horario_id", nullable = false)
-    private Long id;
+    private Long horarioId;
 
     @Column(name = "horaInicio", nullable = false)
     private LocalDateTime horaInicio;

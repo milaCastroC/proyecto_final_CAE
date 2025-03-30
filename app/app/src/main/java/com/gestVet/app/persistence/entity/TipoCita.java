@@ -15,7 +15,7 @@ public class TipoCita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tipo_cita_id", nullable = false)
-    private Long id;
+    private Long tipoCitaId;
 
     @Column(name = "nombre", nullable = false, length = 150)
     private String nombre;

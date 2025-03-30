@@ -14,7 +14,7 @@ public class Cita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cita_id", nullable = false)
-    private Long id;
+    private Long citaId;
 
     @ManyToOne
     @JoinColumn(name = "mascota_id")

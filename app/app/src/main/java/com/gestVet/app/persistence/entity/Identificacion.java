@@ -11,7 +11,7 @@ import lombok.Setter;
 public class Identificacion {
     @Id
     @Column(name = "numero_identificacion", nullable = false)
-    private Long id;
+    private Long identificacion;
 
     @Column(name = "tipo", nullable = false, length = 50)
     private String tipo;

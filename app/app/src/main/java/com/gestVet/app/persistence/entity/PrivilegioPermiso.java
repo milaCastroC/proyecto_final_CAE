@@ -12,7 +12,7 @@ public class PrivilegioPermiso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "privilegio_permiso_id", nullable = false)
-    private Long id;
+    private Long privilegioPermisoId;
 
     @ManyToOne
     @JoinColumn(name = "privilegio_id")
