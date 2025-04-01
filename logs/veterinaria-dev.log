@@ -58,3 +58,4 @@
 2025-04-01T11:31:47.974-05:00  INFO 27872 --- [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
 2025-04-01T11:31:48.605-05:00  INFO 27872 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/gestVet'
 2025-04-01T11:31:48.621-05:00  INFO 27872 --- [main] com.gestVet.app.AppApplication           : Started AppApplication in 7.349 seconds (process running for 7.805)
+2025-04-01T12:12:28.420-05:00  WARN 27872 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m13s97ms791µs700ns).

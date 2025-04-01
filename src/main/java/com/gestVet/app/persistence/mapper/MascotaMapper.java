@@ -9,7 +9,7 @@ import org.mapstruct.InheritInverseConfiguration;
 @Mapper(componentModel = "spring")
 public interface MascotaMapper {
 
-    // Mapeo de Mascota a MascotaDTO
+    // Mapeo de Mascota a MascotaDTO 
     @Mapping(source = "mascotaId", target = "mascotaId")
     @Mapping(source = "propietario", target = "propietarioId")
     @Mapping(source = "nombre", target = "nombre")
