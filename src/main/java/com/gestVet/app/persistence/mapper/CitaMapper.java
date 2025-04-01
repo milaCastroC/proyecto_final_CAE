@@ -15,7 +15,7 @@ public interface CitaMapper {
     @Mapping(source = "horario", target = "horarioId")
     @Mapping(source = "veterinario", target = "veterinarioId")
     @Mapping(source = "fecha", target = "fecha")
-    @Mapping(source = "tipoCita", target = "tipoCitaId")
+    @Mapping(source = "tipoCita", target = "tipoCita")
     @Mapping(source = "estado", target = "estado")
     CitaDTO toDto(Cita cita);
 
@@ -24,7 +24,7 @@ public interface CitaMapper {
     @Mapping(target = "mascota", source = "mascotaId")
     @Mapping(target = "horario", source = "horarioId")
     @Mapping(target = "veterinario", source = "veterinarioId")
-    @Mapping(target = "tipoCita", source = "tipoCitaId")
+    @Mapping(target = "tipoCita", source = "tipoCita")
     Cita toEntity(CitaDTO citaDTO);
 
     // Métodos de mapeo para las relaciones
@@ -64,19 +64,6 @@ public interface CitaMapper {
             Veterinario veterinario = new Veterinario();
             veterinario.setVeterinarioId(veterinarioId);
             return veterinario;
-        }
-        return null;
-    }
-
-    default Long mapTipoCita(TipoCita tipoCita) {
-        return tipoCita != null ? tipoCita.getTipoCitaId() : null;
-    }
-
-    default TipoCita mapTipoCita(Long tipoCitaId) {
-        if (tipoCitaId != null) {
-            TipoCita tipoCita = new TipoCita();
-            tipoCita.setTipoCitaId(tipoCitaId);
-            return tipoCita;
         }
         return null;
     }

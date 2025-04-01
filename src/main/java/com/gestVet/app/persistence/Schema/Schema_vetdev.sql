@@ -29,9 +29,9 @@ CREATE TABLE usuario (
 -- Tabla cliente
 CREATE TABLE cliente (
     cliente_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id BIGINT NOT NULL,
+    persona_id BIGINT NOT NULL,
     es_propietario BOOLEAN DEFAULT TRUE,
-    FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id) ON DELETE CASCADE
+    FOREIGN KEY (persona_id) REFERENCES persona(persona_id) ON DELETE CASCADE
 );
 
 -- Tabla veterinario

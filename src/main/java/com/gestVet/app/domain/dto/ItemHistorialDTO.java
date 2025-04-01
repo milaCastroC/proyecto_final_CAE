@@ -15,8 +15,8 @@ import jakarta.validation.constraints.NotNull;
 public class ItemHistorialDTO {
     private Long itemHistorialId;
 
-    @NotNull(message = "El historial clínico es obligatorio")
-    private Long historialClinicoId;
+    @NotNull(message = "El historial id de mascota es obligatorio")
+    private Long mascotaId;
 
     @NotNull(message = "La fecha es obligatoria")
     private LocalDate fecha;
@@ -29,15 +29,15 @@ public class ItemHistorialDTO {
 
     private String observaciones;
 
-    private String tipos;
+    private String tipo;
 
-    public ItemHistorialDTO(Long itemHistorialId, Long historialClinicoId, LocalDate fecha, String diagnostico, String tratamiento, String observaciones, String tipos) {
+    public ItemHistorialDTO(Long itemHistorialId, Long mascotaId, LocalDate fecha, String diagnostico, String tratamiento, String observaciones, String tipo) {
         this.itemHistorialId = itemHistorialId;
-        this.historialClinicoId = historialClinicoId;
+        this.mascotaId = mascotaId;
         this.fecha = fecha;
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
         this.observaciones = observaciones;
-        this.tipos = tipos;
+        this.tipo = tipo;
     }
 }

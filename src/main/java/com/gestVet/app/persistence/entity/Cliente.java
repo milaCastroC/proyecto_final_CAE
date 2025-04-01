@@ -27,6 +27,4 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     private List<ClienteFactura> clienteFacturas = new ArrayList<>();
 
-    @OneToOne(mappedBy = "cliente")
-    private Propietario propietario;
 }

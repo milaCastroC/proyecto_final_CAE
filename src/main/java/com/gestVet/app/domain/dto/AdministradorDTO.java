@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
+@Data 
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,9 +19,13 @@ public class AdministradorDTO {
     @NotNull(message = "El privilegio es obligatorio")
     private Long privilegioId;
 
-    public AdministradorDTO(Long administradorId, Long usuarioId, Long privilegioId) {
+    @NotNull(message = "El cargo es obligatorio")
+    private String cargo;
+
+    public AdministradorDTO(Long administradorId, Long usuarioId, Long privilegioId, String cargo) {
         this.administradorId = administradorId;
         this.usuarioId = usuarioId;
         this.privilegioId = privilegioId;
+        this.cargo = cargo;
     }
 }

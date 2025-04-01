@@ -17,8 +17,8 @@ public class ItemHistorial {
     private Long itemHistorialId;
 
     @ManyToOne
-    @JoinColumn(name = "historial_clinico_id")
-    private HistorialClinico historialClinico;
+    @JoinColumn(name = "mascota_id", nullable = false)
+    Mascota mascota;
 
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
@@ -35,6 +35,6 @@ public class ItemHistorial {
     @Column(name = "observaciones")
     private String observaciones;
 
-    @Column(name = "tipos", length = 100)
-    private String tipos;
+    @Column(name = "tipo", length = 100)
+    private String tipo;
 }

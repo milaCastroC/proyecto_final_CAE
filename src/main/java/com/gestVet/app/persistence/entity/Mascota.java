@@ -21,7 +21,7 @@ public class Mascota {
 
     @ManyToOne
     @JoinColumn(name = "propietario_id")
-    private Propietario propietario;
+    private Cliente propietario;
 
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
@@ -48,5 +48,5 @@ public class Mascota {
     private List<Cita> citas = new ArrayList<>();
 
     @OneToMany(mappedBy = "mascota")
-    private List<HistorialClinico> historialClinicos = new ArrayList<>();
+    private List<ItemHistorial> historialClinico = new ArrayList<>();
 }

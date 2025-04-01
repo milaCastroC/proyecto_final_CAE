@@ -6,7 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -22,11 +21,10 @@ public class Administrador {
     @Column(name = "administrador_id", nullable = false)
     private Long id;
 
+    private String cargo;
+
     @OneToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-
-    @ManyToOne
-    @JoinColumn(name = "privilegio_id")
-    private Privilegio privilegio;
+   
 }

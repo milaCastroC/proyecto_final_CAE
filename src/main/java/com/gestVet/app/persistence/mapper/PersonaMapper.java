@@ -11,6 +11,7 @@ public interface PersonaMapper {
 
     // Mapeo de Persona a PersonaDTO
     @Mapping(source = "personaId", target = "personaId")
+    @Mapping(source = "tipoIdentificacion", target = "tipoIdentificacion")
     @Mapping(source = "identificacion", target = "identificacion")
     @Mapping(source = "nombre", target = "nombre")
     @Mapping(source = "apellido", target = "apellido")
@@ -23,25 +24,9 @@ public interface PersonaMapper {
 
     // Mapeo inverso de PersonaDTO a Persona
     @InheritInverseConfiguration
-    @Mapping(target = "identificacion", source = "identificacion")
     @Mapping(target = "cliente", source = "clienteId")
     @Mapping(target = "usuario", source = "usuarioId")
     Persona toEntity(PersonaDTO personaDTO);
-
-    // Métodos de conversión para las relaciones
-
-    default Long mapIdentificacion(Identificacion identificacion) {
-        return identificacion != null ? identificacion.getIdentificacion() : null;
-    }
-
-    default Identificacion mapIdentificacion(Long identificacionId) {
-        if (identificacionId != null) {
-            Identificacion identificacion = new Identificacion();
-            identificacion.setIdentificacion(identificacionId);
-            return identificacion;
-        }
-        return null;
-    }
 
     default Long mapCliente(Cliente cliente) {
         return cliente != null ? cliente.getClienteId() : null;

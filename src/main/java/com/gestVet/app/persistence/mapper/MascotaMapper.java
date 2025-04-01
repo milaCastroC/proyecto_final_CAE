@@ -6,8 +6,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.InheritInverseConfiguration;
 
-import java.math.BigDecimal;
-
 @Mapper(componentModel = "spring")
 public interface MascotaMapper {
 
@@ -25,21 +23,22 @@ public interface MascotaMapper {
 
     // Mapeo inverso de MascotaDTO a Mascota
     @InheritInverseConfiguration
+    @Mapping(target = "mascotaId", source = "mascotaId")
     @Mapping(target = "propietario", source = "propietarioId")
     @Mapping(target = "citas", ignore = true)
-    @Mapping(target = "historialClinicos", ignore = true)
+    @Mapping(target = "historialClinico", ignore = true)
     Mascota toEntity(MascotaDTO mascotaDTO);
 
     // Métodos de conversión para las relaciones
-    default Long mapPropietario(Propietario propietario) {
-        return propietario != null ? propietario.getPropietarioId() : null;
+    default Long mapCliente(Cliente Cliente) {
+        return Cliente != null ? Cliente.getClienteId() : null;
     }
 
-    default Propietario mapPropietario(Long propietarioId) {
-        if (propietarioId != null) {
-            Propietario propietario = new Propietario();
-            propietario.setPropietarioId(propietarioId);
-            return propietario;
+    default Cliente mapCliente(Long ClienteId) {
+        if (ClienteId != null) {
+            Cliente Cliente = new Cliente();
+            Cliente.setClienteId(ClienteId);
+            return Cliente;
         }
         return null;
     }

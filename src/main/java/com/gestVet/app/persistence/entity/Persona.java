@@ -14,9 +14,11 @@ public class Persona {
     @Column(name = "persona_id", nullable = false)
     private Long personaId;
 
-    @OneToOne
-    @JoinColumn(name = "identificacion_id")
-    private Identificacion identificacion;
+    @Column(name = "identificacion_tipo", nullable = false, length = 20)
+    private String tipoIdentificacion;
+
+    @Column(name = "identificacion", nullable = false, length = 20)
+    private String identificacion;
 
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;

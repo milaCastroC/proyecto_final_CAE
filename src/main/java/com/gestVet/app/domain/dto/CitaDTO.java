@@ -31,18 +31,18 @@ public class CitaDTO {
     private LocalDateTime fecha;
 
     @NotNull(message = "El tipo de cita es obligatoria")
-    private Long tipoCitaId;
+    private String tipoCita;
 
     @NotBlank(message = "El estado es obligatorio")
     private String estado;
 
-    public CitaDTO(Long citaId, Long mascotaId, Long horarioId, Long veterinarioId, LocalDateTime fecha, Long tipoCitaId, String estado) {
+    public CitaDTO(Long citaId, Long mascotaId, Long horarioId, Long veterinarioId, LocalDateTime fecha, String tipoCita, String estado) {
         this.citaId = citaId;
         this.mascotaId = mascotaId;
         this.horarioId = horarioId;
         this.veterinarioId = veterinarioId;
         this.fecha = fecha;
-        this.tipoCitaId = tipoCitaId;
+        this.tipoCita = tipoCita;
         this.estado = estado;
     }
 }

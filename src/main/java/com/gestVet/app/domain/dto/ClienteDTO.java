@@ -19,12 +19,9 @@ public class ClienteDTO {
     @NotNull(message = "Es obligatorio decir si es o no propietario")
     private Boolean esPropietario;
 
-    private Long propietarioId; // Opcional, solo si el cliente tiene un propietario asociado
-
-    public ClienteDTO(Long clienteId, Long personaId, Boolean esPropietario, Long propietarioId) {
+    public ClienteDTO(Long clienteId, Long personaId, Boolean esPropietario) {
         this.clienteId = clienteId;
         this.personaId = personaId;
         this.esPropietario = esPropietario;
-        this.propietarioId = propietarioId;
     }
 }

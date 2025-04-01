@@ -13,8 +13,10 @@ import lombok.Setter;
 public class PersonaDTO {
     private Long personaId;
 
+    private String tipoIdentificacion;
+
     @NotNull(message = "La identificación es obligatoria")
-    private Long identificacion;
+    private String identificacion;
 
     @NotNull(message = "El nombre es obligatorio")
     private String nombre;
@@ -32,9 +34,10 @@ public class PersonaDTO {
 
     private Long usuarioId;
 
-    public PersonaDTO(Long personaId, Long identificacion, String nombre, String apellido, String telefono, String email, String direccion, Long clienteId, Long usuarioId) {
+    public PersonaDTO(Long personaId, String identificacion, String tipoIdentificacion, String nombre, String apellido, String telefono, String email, String direccion, Long clienteId, Long usuarioId) {
         this.personaId = personaId;
         this.identificacion = identificacion;
+        this.tipoIdentificacion = tipoIdentificacion;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
