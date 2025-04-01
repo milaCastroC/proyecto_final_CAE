@@ -1,161 +1,136 @@
-USE vetdev;
-
+-- Creación de la base de datos
 CREATE DATABASE IF NOT EXISTS vetdev;
 USE vetdev;
 
-CREATE TABLE identificacion (
-    numero_identificacion BIGINT PRIMARY KEY,
-    tipo VARCHAR(50) NOT NULL,
-    estado BOOLEAN NOT NULL DEFAULT FALSE
-);
-
+-- Tabla persona
 CREATE TABLE persona (
     persona_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    identificacion_id BIGINT UNIQUE,
+    identificacion_tipo VARCHAR(15) NOT NULL,
+    identificacion VARCHAR(30) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
     telefono VARCHAR(20),
     email VARCHAR(100),
-    direccion TEXT,
-    FOREIGN KEY (identificacion_id) REFERENCES identificacion(numero_identificacion)
+    UNIQUE KEY (identificacion_tipo, identificacion)
 );
 
+-- Tabla usuario
 CREATE TABLE usuario (
     usuario_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     rol VARCHAR(20) NOT NULL,
     persona_id BIGINT UNIQUE,
+
+    UNIQUE KEY idx_username (username),
     FOREIGN KEY (persona_id) REFERENCES persona(persona_id)
 );
 
-CREATE TABLE privilegio (
-    privilegio_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(200) NOT NULL
+-- Tabla cliente
+CREATE TABLE cliente (
+    cliente_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    es_propietario BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id) ON DELETE CASCADE
 );
 
-CREATE TABLE permiso (
-    permiso_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(200) NOT NULL
-);
-
-CREATE TABLE privilegio_permiso (
-    privilegio_permiso_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    privilegio_id BIGINT NOT NULL,
-    permiso_id BIGINT NOT NULL,
-    FOREIGN KEY (privilegio_id) REFERENCES privilegio(privilegio_id),
-    FOREIGN KEY (permiso_id) REFERENCES permiso(permiso_id),
-    UNIQUE KEY (privilegio_id, permiso_id)
-);
-
-CREATE TABLE administrador (
-    administrador_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id BIGINT UNIQUE NOT NULL,
-    privilegio_id BIGINT,
-    FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id),
-    FOREIGN KEY (privilegio_id) REFERENCES privilegio(privilegio_id)
-);
-
+-- Tabla veterinario
 CREATE TABLE veterinario (
     veterinario_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    especialidad VARCHAR(200) NOT NULL,
-    tarjeta_profesional VARCHAR(30) NOT NULL,
-    usuario_id BIGINT UNIQUE NOT NULL,
-    FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id)
+    usuario_id BIGINT NOT NULL,
+    especialidad VARCHAR(200),
+    tarjeta_profesional VARCHAR(100),
+    FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id) ON DELETE CASCADE
 );
 
-CREATE TABLE horario (
-    horario_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    hora_inicio DATETIME NOT NULL,
-    hora_fin DATETIME NOT NULL
-);
-
+-- Tabla veterinario_horario
 CREATE TABLE veterinario_horario (
     veterinario_horario_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     veterinario_id BIGINT NOT NULL,
     horario_id BIGINT NOT NULL,
-    FOREIGN KEY (veterinario_id) REFERENCES veterinario(veterinario_id),
-    FOREIGN KEY (horario_id) REFERENCES horario(horario_id),
-    UNIQUE KEY (veterinario_id, horario_id)
+    FOREIGN KEY (veterinario_id) REFERENCES veterinario(veterinario_id) ON DELETE CASCADE
 );
 
-CREATE TABLE cliente (
-    cliente_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    persona_id BIGINT UNIQUE NOT NULL,
-    es_propietario BOOLEAN NOT NULL DEFAULT FALSE,
-    FOREIGN KEY (persona_id) REFERENCES persona(persona_id)
+-- Tabla horario
+CREATE TABLE horario (
+    horario_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    horaInicio TIMESTAMP NOT NULL,
+    horaFin TIMESTAMP NOT NULL,
+    INDEX idx_horario (horaInicio, horaFin)
 );
 
-CREATE TABLE propietario (
-    propietario_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    cliente_id BIGINT UNIQUE NOT NULL,
-    FOREIGN KEY (cliente_id) REFERENCES cliente(cliente_id)
+-- Tabla administrador
+CREATE TABLE administrador (
+    administrador_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    cargo VARCHAR(50),
+    area VARCHAR(50),
+    FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id) ON DELETE CASCADE
 );
 
+-- Tabla mascota
 CREATE TABLE mascota (
     mascota_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     propietario_id BIGINT NOT NULL,
-    nombre VARCHAR(100) NOT NULL,
-    especie VARCHAR(150) NOT NULL,
-    raza VARCHAR(150),
-    sexo ENUM('Macho', 'Hembra') NOT NULL,
-    fecha_nacimiento DATE,
+    nombre VARCHAR(100),
+    especie VARCHAR(50),
+    raza VARCHAR(50),
+    sexo ENUM('Macho', 'Hembra'),
+    fecha_nacimiento DATETIME,
     edad INT,
     peso DECIMAL(5,2),
-    FOREIGN KEY (propietario_id) REFERENCES propietario(propietario_id)
+    FOREIGN KEY (propietario_id) REFERENCES cliente(cliente_id) ON DELETE CASCADE,
+    INDEX idx_mascota_propietario (propietario_id)
 );
 
-CREATE TABLE historial_clinico (
-    historial_clinico_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    mascota_id BIGINT NOT NULL,
-    FOREIGN KEY (mascota_id) REFERENCES mascota(mascota_id),
-    UNIQUE KEY (mascota_id)
+-- Tabla factura
+CREATE TABLE factura (
+    factura_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    total DOUBLE NOT NULL,
+    estado VARCHAR(50),
+    metodo_pago VARCHAR(50),
+    fecha_emision DATE NOT NULL,
+    INDEX idx_factura_fecha (fecha_emision)
 );
 
-CREATE TABLE tipo_cita (
-    tipo_cita_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(150) NOT NULL
+-- Tabla cliente_factura
+CREATE TABLE cliente_factura (
+    cliente_factura_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id BIGINT NOT NULL,
+    factura_id BIGINT NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES cliente(cliente_id) ON DELETE CASCADE,
+    FOREIGN KEY (factura_id) REFERENCES factura(factura_id) ON DELETE CASCADE,
+    UNIQUE KEY idx_cliente_factura (cliente_id, factura_id)
 );
 
+-- Tabla cita
 CREATE TABLE cita (
     cita_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     mascota_id BIGINT NOT NULL,
     horario_id BIGINT NOT NULL,
     veterinario_id BIGINT NOT NULL,
     fecha DATETIME NOT NULL,
-    tipo_cita_id BIGINT NOT NULL,
-    estado ENUM('Programada', 'Confirmada', 'En_progreso', 'Completada', 'Cancelada') NOT NULL,
-    FOREIGN KEY (mascota_id) REFERENCES mascota(mascota_id),
-    FOREIGN KEY (horario_id) REFERENCES horario(horario_id),
-    FOREIGN KEY (veterinario_id) REFERENCES veterinario(veterinario_id),
-    FOREIGN KEY (tipo_cita_id) REFERENCES tipo_cita(tipo_cita_id)
+    tipo_cita VARCHAR(100),
+    estado ENUM('Atendida', 'Confirmada', 'Cancelada') NOT NULL DEFAULT 'Confirmada',
+    FOREIGN KEY (mascota_id) REFERENCES mascota(mascota_id) ON DELETE CASCADE,
+    FOREIGN KEY (horario_id) REFERENCES horario(horario_id) ON DELETE CASCADE,
+    FOREIGN KEY (veterinario_id) REFERENCES veterinario(veterinario_id) ON DELETE CASCADE,
+    INDEX idx_cita_fecha (fecha),
+    INDEX idx_cita_mascota (mascota_id)
 );
 
+-- Tabla item_historial
 CREATE TABLE item_historial (
     item_historial_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    historial_clinico_id BIGINT NOT NULL,
+    mascota_id BIGINT NOT NULL,
     fecha DATE NOT NULL,
-    diagnostico TEXT NOT NULL,
-    tratamiento TEXT NOT NULL,
+    diagnostico TEXT,
+    tratamiento TEXT,
     observaciones TEXT,
-    tipos VARCHAR(100),
-    FOREIGN KEY (historial_clinico_id) REFERENCES historial_clinico(historial_clinico_id)
+    tipo VARCHAR(100),
+    cita_id BIGINT,
+    FOREIGN KEY (mascota_id) REFERENCES mascota(mascota_id) ON DELETE CASCADE,
+    FOREIGN KEY (cita_id) REFERENCES cita(cita_id) ON DELETE SET NULL,
+    INDEX idx_historial_mascota (mascota_id),
+    INDEX idx_historial_fecha (fecha)
 );
-
-CREATE TABLE factura (
-    factura_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    total DECIMAL(10,2) NOT NULL,
-    estado VARCHAR(50) NOT NULL,
-    metodo_pago VARCHAR(60) NOT NULL,
-    fecha_emision DATE NOT NULL
-);
-
-CREATE TABLE cliente_factura (
-    cliente_factura_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    cliente_id BIGINT NOT NULL,
-    factura_id BIGINT NOT NULL,
-    FOREIGN KEY (cliente_id) REFERENCES cliente(cliente_id),
-    FOREIGN KEY (factura_id) REFERENCES factura(factura_id),
-    UNIQUE KEY (cliente_id, factura_id)
-);
-
