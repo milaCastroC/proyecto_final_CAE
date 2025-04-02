@@ -27,9 +27,6 @@ public interface VeterinarioRepository {
     // Contar todos los registros
     long count();
 
-    // Validar si existe por ID
-    boolean existsByID(Long id);
-
     // Validar si la tarjeta profesional es única
     boolean existsByTarjetaProfesional(String tarjetaProfesional);
 
