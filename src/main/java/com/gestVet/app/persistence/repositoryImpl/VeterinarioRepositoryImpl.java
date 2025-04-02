@@ -57,7 +57,7 @@ public class VeterinarioRepositoryImpl implements VeterinarioRepository {
             veterinarioCrudRepository.deleteById(id);
             return true;
         }
-        throw new NullPointerException("No existe el veterinario");
+        return false;
     }
 
     @Override

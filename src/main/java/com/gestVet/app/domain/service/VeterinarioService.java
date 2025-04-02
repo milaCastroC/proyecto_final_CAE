@@ -34,13 +34,17 @@ public class VeterinarioService {
     // Actualizar un registro
     public VeterinarioDTO update(VeterinarioDTO veterinarioDTO) {
         if(!existsById(veterinarioDTO.getVeterinarioId())){
-            throw new NullPointerException("El veterinario que busca no existe");
+            throw new IllegalArgumentException("El veterinario que busca no existe");
         }
         VeterinarioDTO vetOriginal = findById(veterinarioDTO.getVeterinarioId()).orElse(null);
-        if(!vetOriginal.getTarjetaProfesional().equals(veterinarioDTO.getTarjetaProfesional()) && validarTarjetaProfesional(veterinarioDTO.getTarjetaProfesional())) {
-            return veterinarioRepository.update(veterinarioDTO);
+
+        if(!vetOriginal.getTarjetaProfesional().equals(veterinarioDTO.getTarjetaProfesional())) {
+            if(validarTarjetaProfesional(veterinarioDTO.getTarjetaProfesional())) {
+                return veterinarioRepository.update(veterinarioDTO);
+            }
+            throw new IllegalArgumentException("La tarjeta profesional ya se encuentra registrada");
         }
-        throw new IllegalArgumentException("La tarjeta profesional ya se encuentra registrada");
+        return veterinarioRepository.update(veterinarioDTO);
     }
 
     // Eliminar un registro
@@ -62,4 +66,7 @@ public class VeterinarioService {
     public boolean validarTarjetaProfesional(String tarjetaProfesional) {
         return !veterinarioRepository.existsByTarjetaProfesional(tarjetaProfesional);
     }
+
+    // TODO validar que el usuario exista
+    // TODO validar que sólo pueda haber un usuario por veterinario
 }
