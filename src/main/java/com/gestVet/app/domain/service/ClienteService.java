@@ -2,6 +2,9 @@ package com.gestVet.app.domain.service;
 
 import com.gestVet.app.domain.dto.ClienteDTO;
 import com.gestVet.app.domain.repository.ClienteRepository;
+import com.gestVet.app.persistence.exceptions.ClienteNotFoundException;
+import com.gestVet.app.persistence.exceptions.PersonaIdDuplicadoException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,17 +27,18 @@ public class ClienteService {
     }
 
     // Guardar un registro
-    public ClienteDTO save(ClienteDTO clienteDTO) {
+ 
+    public ClienteDTO save(ClienteDTO clienteDTO) throws PersonaIdDuplicadoException {
         if (validarPersonaId(clienteDTO.getPersonaId())) {
             return clienteRepository.save(clienteDTO);
         }
-        throw new IllegalArgumentException("El ID de persona ya está asociado a otro cliente");
+        throw new PersonaIdDuplicadoException();
     }
 
     // Actualizar un registro
-    public ClienteDTO update(ClienteDTO clienteDTO) {
+    public ClienteDTO update(ClienteDTO clienteDTO) throws ClienteNotFoundException, PersonaIdDuplicadoException {
         if (!existsById(clienteDTO.getClienteId())) {
-            throw new IllegalArgumentException("El cliente que busca no existe");
+            throw new ClienteNotFoundException();
         }
         
         ClienteDTO clienteOriginal = findById(clienteDTO.getClienteId()).orElse(null);
@@ -43,7 +47,7 @@ public class ClienteService {
             if (validarPersonaId(clienteDTO.getPersonaId())) {
                 return clienteRepository.update(clienteDTO);
             }
-            throw new IllegalArgumentException("El nuevo ID de persona ya está en uso");
+            throw new PersonaIdDuplicadoException();
         }
         return clienteRepository.update(clienteDTO);
     }

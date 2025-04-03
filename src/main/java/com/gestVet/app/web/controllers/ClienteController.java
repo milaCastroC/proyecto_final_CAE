@@ -2,6 +2,9 @@ package com.gestVet.app.web.controllers;
 
 import com.gestVet.app.domain.dto.ClienteDTO;
 import com.gestVet.app.domain.service.ClienteService;
+import com.gestVet.app.persistence.exceptions.ClienteNotFoundException;
+import com.gestVet.app.persistence.exceptions.PersonaIdDuplicadoException;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -39,7 +42,7 @@ public class ClienteController {
     public ResponseEntity<ClienteDTO> getClienteById(@PathVariable Long id) {
         Optional<ClienteDTO> cliente = clienteService.findById(id);
         return cliente.map(ResponseEntity::ok)
-                    .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @Operation(summary = "Registrar nuevo cliente", description = "Crea un nuevo cliente en el sistema")
@@ -49,8 +52,12 @@ public class ClienteController {
     })
     @PostMapping("/save")
     public ResponseEntity<ClienteDTO> createCliente(@RequestBody ClienteDTO clienteDTO) {
-        ClienteDTO savedCliente = clienteService.save(clienteDTO);
-        return new ResponseEntity<>(savedCliente, HttpStatus.CREATED);
+        try {
+            ClienteDTO savedCliente = clienteService.save(clienteDTO);
+            return new ResponseEntity<>(savedCliente, HttpStatus.CREATED);
+        } catch (PersonaIdDuplicadoException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
     }
 
     @Operation(summary = "Actualizar cliente", description = "Actualiza los datos de un cliente existente")
@@ -62,7 +69,14 @@ public class ClienteController {
     @PutMapping("/update/{id}")
     public ResponseEntity<ClienteDTO> updateCliente(@PathVariable Long id, @RequestBody ClienteDTO clienteDTO) {
         clienteDTO.setClienteId(id);
-        ClienteDTO updatedCliente = clienteService.update(clienteDTO);
+        ClienteDTO updatedCliente = null;
+        try {
+            updatedCliente = clienteService.update(clienteDTO);
+        } catch (ClienteNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        } catch (PersonaIdDuplicadoException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
         return ResponseEntity.ok(updatedCliente);
     }
 

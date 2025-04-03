@@ -5560,3 +5560,198 @@ java.lang.ClassCastException: class java.lang.Long cannot be cast to class java.
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
 	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
 
+2025-04-03T15:30:16.404-05:00  INFO 29300 --- [main] com.gestVet.app.AppApplication           : Starting AppApplication using Java 17.0.11 with PID 29300 (C:\Users\SEBASTIAN\OneDrive\Escritorio\UNIVERSIDAD\CONSTRUCCION APPS EMPRESARIALES\Proyecto final\proyecto_final_CAE\build\classes\java\main started by SEBASTIAN in C:\Users\SEBASTIAN\OneDrive\Escritorio\UNIVERSIDAD\CONSTRUCCION APPS EMPRESARIALES\Proyecto final\proyecto_final_CAE)
+2025-04-03T15:30:16.406-05:00  INFO 29300 --- [main] com.gestVet.app.AppApplication           : The following 1 profile is active: "dev"
+2025-04-03T15:30:17.423-05:00  INFO 29300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-03T15:30:17.524-05:00  INFO 29300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84 ms. Found 2 JPA repository interfaces.
+2025-04-03T15:30:18.216-05:00  INFO 29300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-03T15:30:18.233-05:00  INFO 29300 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-03T15:30:18.234-05:00  INFO 29300 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-03T15:30:18.353-05:00  INFO 29300 --- [main] o.a.c.c.C.[.[localhost].[/gestVet]       : Initializing Spring embedded WebApplicationContext
+2025-04-03T15:30:18.354-05:00  INFO 29300 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1897 ms
+2025-04-03T15:30:18.491-05:00  INFO 29300 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-03T15:30:18.676-05:00  INFO 29300 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.mariadb.jdbc.Connection@6a950a3b
+2025-04-03T15:30:18.680-05:00  INFO 29300 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-03T15:30:18.756-05:00  INFO 29300 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-03T15:30:18.863-05:00  INFO 29300 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-03T15:30:18.899-05:00  INFO 29300 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-03T15:30:19.294-05:00  INFO 29300 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-03T15:30:19.408-05:00  WARN 29300 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 8.0.40 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 10.4.0. Check the community dialects project for available legacy versions.
+2025-04-03T15:30:19.441-05:00  INFO 29300 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.40
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-03T15:30:20.901-05:00  INFO 29300 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-03T15:30:20.904-05:00  INFO 29300 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-03T15:30:21.259-05:00  INFO 29300 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-03T15:30:21.483-05:00  WARN 29300 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-03T15:30:21.529-05:00  INFO 29300 --- [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-03T15:30:21.960-05:00  INFO 29300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/gestVet'
+2025-04-03T15:30:21.971-05:00  INFO 29300 --- [main] com.gestVet.app.AppApplication           : Started AppApplication in 6.174 seconds (process running for 6.643)
+2025-04-03T15:49:20.081-05:00  INFO 29300 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/gestVet]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-03T15:49:20.083-05:00  INFO 29300 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-03T15:49:20.089-05:00  INFO 29300 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2025-04-03T15:49:22.579-05:00  INFO 29300 --- [http-nio-8080-exec-5] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 907 ms
+2025-04-03T15:49:40.881-05:00 ERROR 29300 --- [http-nio-8080-exec-7] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/gestVet] threw exception [Request processing failed: java.lang.IllegalArgumentException: El cliente que busca no existe] with root cause
+
+java.lang.IllegalArgumentException: El cliente que busca no existe
+	at com.gestVet.app.domain.service.ClienteService.update(ClienteService.java:37) ~[main/:na]
+	at com.gestVet.app.web.controllers.ClienteController.updateCliente(ClienteController.java:65) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.36.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.36.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-04-03T15:50:38.241-05:00  INFO 17352 --- [main] com.gestVet.app.AppApplication           : Starting AppApplication using Java 17.0.11 with PID 17352 (C:\Users\SEBASTIAN\OneDrive\Escritorio\UNIVERSIDAD\CONSTRUCCION APPS EMPRESARIALES\Proyecto final\proyecto_final_CAE\build\classes\java\main started by SEBASTIAN in C:\Users\SEBASTIAN\OneDrive\Escritorio\UNIVERSIDAD\CONSTRUCCION APPS EMPRESARIALES\Proyecto final\proyecto_final_CAE)
+2025-04-03T15:50:38.244-05:00  INFO 17352 --- [main] com.gestVet.app.AppApplication           : The following 1 profile is active: "dev"
+2025-04-03T15:50:39.147-05:00  INFO 17352 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-03T15:50:39.226-05:00  INFO 17352 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 2 JPA repository interfaces.
+2025-04-03T15:50:39.851-05:00  INFO 17352 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-03T15:50:39.871-05:00  INFO 17352 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-03T15:50:39.873-05:00  INFO 17352 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-03T15:50:40.003-05:00  INFO 17352 --- [main] o.a.c.c.C.[.[localhost].[/gestVet]       : Initializing Spring embedded WebApplicationContext
+2025-04-03T15:50:40.004-05:00  INFO 17352 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1711 ms
+2025-04-03T15:50:40.149-05:00  INFO 17352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-03T15:50:40.309-05:00  INFO 17352 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.mariadb.jdbc.Connection@60e1d87c
+2025-04-03T15:50:40.314-05:00  INFO 17352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-03T15:50:40.393-05:00  INFO 17352 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-03T15:50:40.499-05:00  INFO 17352 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-03T15:50:40.545-05:00  INFO 17352 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-03T15:50:40.941-05:00  INFO 17352 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-03T15:50:41.018-05:00  WARN 17352 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 8.0.40 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 10.4.0. Check the community dialects project for available legacy versions.
+2025-04-03T15:50:41.056-05:00  INFO 17352 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.40
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-03T15:50:42.465-05:00  INFO 17352 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-03T15:50:42.474-05:00  INFO 17352 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-03T15:50:42.811-05:00  INFO 17352 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-03T15:50:43.043-05:00  WARN 17352 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-03T15:50:43.097-05:00  INFO 17352 --- [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-03T15:50:43.587-05:00  INFO 17352 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/gestVet'
+2025-04-03T15:50:43.603-05:00  INFO 17352 --- [main] com.gestVet.app.AppApplication           : Started AppApplication in 5.945 seconds (process running for 6.335)
+2025-04-03T15:50:48.445-05:00  INFO 17352 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/gestVet]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-03T15:50:48.445-05:00  INFO 17352 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-03T15:50:48.449-05:00  INFO 17352 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-04-03T15:52:05.859-05:00  INFO 3176 --- [main] com.gestVet.app.AppApplication           : Starting AppApplication using Java 17.0.11 with PID 3176 (C:\Users\SEBASTIAN\OneDrive\Escritorio\UNIVERSIDAD\CONSTRUCCION APPS EMPRESARIALES\Proyecto final\proyecto_final_CAE\build\classes\java\main started by SEBASTIAN in C:\Users\SEBASTIAN\OneDrive\Escritorio\UNIVERSIDAD\CONSTRUCCION APPS EMPRESARIALES\Proyecto final\proyecto_final_CAE)
+2025-04-03T15:52:05.861-05:00  INFO 3176 --- [main] com.gestVet.app.AppApplication           : The following 1 profile is active: "dev"
+2025-04-03T15:52:06.755-05:00  INFO 3176 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-03T15:52:06.858-05:00  INFO 3176 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 91 ms. Found 2 JPA repository interfaces.
+2025-04-03T15:52:07.462-05:00  INFO 3176 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-03T15:52:07.478-05:00  INFO 3176 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-03T15:52:07.479-05:00  INFO 3176 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-03T15:52:07.557-05:00  INFO 3176 --- [main] o.a.c.c.C.[.[localhost].[/gestVet]       : Initializing Spring embedded WebApplicationContext
+2025-04-03T15:52:07.557-05:00  INFO 3176 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1649 ms
+2025-04-03T15:52:07.697-05:00  INFO 3176 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-03T15:52:07.823-05:00  INFO 3176 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.mariadb.jdbc.Connection@6a950a3b
+2025-04-03T15:52:07.824-05:00  INFO 3176 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-03T15:52:07.891-05:00  INFO 3176 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-03T15:52:07.945-05:00  INFO 3176 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-03T15:52:07.993-05:00  INFO 3176 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-03T15:52:08.416-05:00  INFO 3176 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-03T15:52:08.486-05:00  WARN 3176 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 8.0.40 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 10.4.0. Check the community dialects project for available legacy versions.
+2025-04-03T15:52:08.509-05:00  INFO 3176 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.40
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-03T15:52:09.709-05:00  INFO 3176 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-03T15:52:09.715-05:00  INFO 3176 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-03T15:52:10.016-05:00  INFO 3176 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-03T15:52:10.249-05:00  WARN 3176 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-03T15:52:10.296-05:00  INFO 3176 --- [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-03T15:52:10.776-05:00  INFO 3176 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/gestVet'
+2025-04-03T15:52:10.787-05:00  INFO 3176 --- [main] com.gestVet.app.AppApplication           : Started AppApplication in 5.586 seconds (process running for 6.05)
+2025-04-03T15:52:19.760-05:00  INFO 3176 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/gestVet]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-03T15:52:19.760-05:00  INFO 3176 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-03T15:52:19.762-05:00  INFO 3176 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-03T15:54:12.101-05:00  INFO 3176 --- [http-nio-8080-exec-5] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 288 ms
+2025-04-03T16:10:51.638-05:00  INFO 19580 --- [main] com.gestVet.app.AppApplication           : Starting AppApplication using Java 17.0.11 with PID 19580 (C:\Users\SEBASTIAN\OneDrive\Escritorio\UNIVERSIDAD\CONSTRUCCION APPS EMPRESARIALES\Proyecto final\proyecto_final_CAE\build\classes\java\main started by SEBASTIAN in C:\Users\SEBASTIAN\OneDrive\Escritorio\UNIVERSIDAD\CONSTRUCCION APPS EMPRESARIALES\Proyecto final\proyecto_final_CAE)
+2025-04-03T16:10:51.641-05:00  INFO 19580 --- [main] com.gestVet.app.AppApplication           : The following 1 profile is active: "dev"
+2025-04-03T16:10:52.579-05:00  INFO 19580 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-03T16:10:52.662-05:00  INFO 19580 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 2 JPA repository interfaces.
+2025-04-03T16:10:53.272-05:00  INFO 19580 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-03T16:10:53.291-05:00  INFO 19580 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-03T16:10:53.291-05:00  INFO 19580 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-03T16:10:53.370-05:00  INFO 19580 --- [main] o.a.c.c.C.[.[localhost].[/gestVet]       : Initializing Spring embedded WebApplicationContext
+2025-04-03T16:10:53.371-05:00  INFO 19580 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1682 ms
+2025-04-03T16:10:53.532-05:00  INFO 19580 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-03T16:10:53.658-05:00  INFO 19580 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.mariadb.jdbc.Connection@4315c28c
+2025-04-03T16:10:53.661-05:00  INFO 19580 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-03T16:10:53.716-05:00  INFO 19580 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-03T16:10:53.777-05:00  INFO 19580 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-03T16:10:53.848-05:00  INFO 19580 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-03T16:10:54.203-05:00  INFO 19580 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-03T16:10:54.264-05:00  WARN 19580 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 8.0.40 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 10.4.0. Check the community dialects project for available legacy versions.
+2025-04-03T16:10:54.283-05:00  INFO 19580 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.40
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-03T16:10:55.461-05:00  INFO 19580 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-03T16:10:55.466-05:00  INFO 19580 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-03T16:10:55.770-05:00  INFO 19580 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-03T16:10:55.999-05:00  WARN 19580 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-03T16:10:56.064-05:00  INFO 19580 --- [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-03T16:10:56.574-05:00  INFO 19580 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/gestVet'
+2025-04-03T16:10:56.586-05:00  INFO 19580 --- [main] com.gestVet.app.AppApplication           : Started AppApplication in 5.584 seconds (process running for 6.079)
