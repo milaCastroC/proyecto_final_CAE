@@ -9,6 +9,7 @@ CREATE TABLE persona (
     identificacion VARCHAR(30) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
+    direccion TEXT,
     telefono VARCHAR(20),
     email VARCHAR(100),
     UNIQUE KEY (identificacion_tipo, identificacion)

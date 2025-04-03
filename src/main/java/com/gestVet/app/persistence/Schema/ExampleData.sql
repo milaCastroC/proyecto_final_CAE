@@ -1,27 +1,26 @@
 USE vetdev;
 
--- Inserción de datos en la tabla persona
-INSERT INTO persona (identificacion_tipo, identificacion, nombre, apellido, telefono, email) VALUES
-('CC', '12345678', 'Juan', 'Pérez', '555-1234', 'juan.perez@email.com'),
-('CC', '23456789', 'María', 'Gómez', '555-2345', 'maria.gomez@email.com'),
-('Pasaporte', 'AB123456', 'Carlos', 'López', '555-3456', 'carlos.lopez@email.com'),
-('CC', '34567890', 'Ana', 'Martínez', '555-4567', 'ana.martinez@email.com'),
-('CE', 'CE987654', 'Roberto', 'Rodríguez', '555-5678', 'roberto.rodriguez@email.com'),
-('CC', '45678901', 'Laura', 'Sánchez', '555-6789', 'laura.sanchez@email.com'),
-('Pasaporte', 'CD456789', 'Miguel', 'Fernández', '555-7890', 'miguel.fernandez@email.com'),
-('CC', '56789012', 'Sofía', 'Díaz', '555-8901', 'sofia.diaz@email.com'),
-('CE', 'CE654321', 'Pedro', 'Torres', '555-9012', 'pedro.torres@email.com'),
-('CC', '67890123', 'Carmen', 'Ruiz', '555-0123', 'carmen.ruiz@email.com'),
-('CC', '78901234', 'Javier', 'Vargas', '555-1235', 'javier.vargas@email.com'),
-('CC', '89012345', 'Lucía', 'Castro', '555-2346', 'lucia.castro@email.com'),
-('Pasaporte', 'EF789012', 'Diego', 'Morales', '555-3457', 'diego.morales@email.com'),
-('CC', '90123456', 'Valentina', 'Ortega', '555-4568', 'valentina.ortega@email.com'),
-('CE', 'CE456789', 'Fernando', 'Herrera', '555-5679', 'fernando.herrera@email.com'),
-('CC', '01234567', 'Gabriela', 'Mendoza', '555-6780', 'gabriela.mendoza@email.com'),
-('Pasaporte', 'GH012345', 'Mateo', 'Silva', '555-7891', 'mateo.silva@email.com'),
-('CC', '11234568', 'Camila', 'Flores', '555-8902', 'camila.flores@email.com'),
-('CE', 'CE123789', 'Ricardo', 'Navarro', '555-9013', 'ricardo.navarro@email.com'),
-('CC', '21345679', 'Isabel', 'Rojas', '555-0124', 'isabel.rojas@email.com');
+INSERT INTO persona (identificacion_tipo, identificacion, nombre, apellido, telefono, email, direccion) VALUES
+('CC', '12345678', 'Juan', 'Pérez', '555-1234', 'juan.perez@email.com', 'Calle 1 #10-20'),
+('CC', '23456789', 'María', 'Gómez', '555-2345', 'maria.gomez@email.com', 'Carrera 5 #15-30'),
+('Pasaporte', 'AB123456', 'Carlos', 'López', '555-3456', 'carlos.lopez@email.com', 'Avenida 3 #12-45'),
+('CC', '34567890', 'Ana', 'Martínez', '555-4567', 'ana.martinez@email.com', 'Calle 8 #20-50'),
+('CE', 'CE987654', 'Roberto', 'Rodríguez', '555-5678', 'roberto.rodriguez@email.com', 'Diagonal 7 #25-10'),
+('CC', '45678901', 'Laura', 'Sánchez', '555-6789', 'laura.sanchez@email.com', 'Transversal 4 #30-15'),
+('Pasaporte', 'CD456789', 'Miguel', 'Fernández', '555-7890', 'miguel.fernandez@email.com', 'Calle 2 #5-60'),
+('CC', '56789012', 'Sofía', 'Díaz', '555-8901', 'sofia.diaz@email.com', 'Carrera 10 #40-70'),
+('CE', 'CE654321', 'Pedro', 'Torres', '555-9012', 'pedro.torres@email.com', 'Avenida 6 #50-80'),
+('CC', '67890123', 'Carmen', 'Ruiz', '555-0123', 'carmen.ruiz@email.com', 'Calle 11 #60-90'),
+('CC', '78901234', 'Javier', 'Vargas', '555-1235', 'javier.vargas@email.com', 'Carrera 3 #70-100'),
+('CC', '89012345', 'Lucía', 'Castro', '555-2346', 'lucia.castro@email.com', 'Avenida 9 #80-110'),
+('Pasaporte', 'EF789012', 'Diego', 'Morales', '555-3457', 'diego.morales@email.com', 'Calle 5 #90-120'),
+('CC', '90123456', 'Valentina', 'Ortega', '555-4568', 'valentina.ortega@email.com', 'Carrera 12 #100-130'),
+('CE', 'CE456789', 'Fernando', 'Herrera', '555-5679', 'fernando.herrera@email.com', 'Transversal 8 #110-140'),
+('CC', '01234567', 'Gabriela', 'Mendoza', '555-6780', 'gabriela.mendoza@email.com', 'Calle 14 #120-150'),
+('Pasaporte', 'GH012345', 'Mateo', 'Silva', '555-7891', 'mateo.silva@email.com', 'Diagonal 5 #130-160'),
+('CC', '11234568', 'Camila', 'Flores', '555-8902', 'camila.flores@email.com', 'Carrera 14 #140-170'),
+('CE', 'CE123789', 'Ricardo', 'Navarro', '555-9013', 'ricardo.navarro@email.com', 'Calle 18 #150-180'),
+('CC', '21345679', 'Isabel', 'Rojas', '555-0124', 'isabel.rojas@email.com', 'Avenida 15 #160-190');
 
 -- Inserción de datos en la tabla usuario
 INSERT INTO usuario (username, password, rol, persona_id) VALUES
