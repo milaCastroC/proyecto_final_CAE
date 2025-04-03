@@ -10,7 +10,7 @@ import org.mapstruct.InheritInverseConfiguration;
 @Mapper(componentModel = "spring")
 public interface AdministradorMapper {
 
-    // Mapeo de Administrador a AdministradorDTO
+    // Mapeo Administrador a AdministradorDTO
     @Mapping(source = "id", target = "administradorId")
     @Mapping(source = "usuario", target = "usuarioId")
     @Mapping(source = "cargo", target = "cargo")
