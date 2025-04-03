@@ -62,7 +62,7 @@ INSERT INTO veterinario (usuario_id, especialidad, tarjeta_profesional) VALUES
 (10, 'Radiología', 'TP-01234');
 
 -- Inserción de datos en la tabla horario
-INSERT INTO horario (horaInicio, horaFin) VALUES
+INSERT INTO horario (hora_inicio, hora_fin) VALUES
 ('2025-04-01 08:00:00', '2025-04-01 10:00:00'),
 ('2025-04-01 10:30:00', '2025-04-01 12:30:00'),
 ('2025-04-01 14:00:00', '2025-04-01 16:00:00'),

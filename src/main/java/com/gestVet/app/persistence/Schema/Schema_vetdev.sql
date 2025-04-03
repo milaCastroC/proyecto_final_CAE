@@ -55,9 +55,9 @@ CREATE TABLE veterinario_horario (
 -- Tabla horario
 CREATE TABLE horario (
     horario_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    horaInicio TIMESTAMP NOT NULL,
-    horaFin TIMESTAMP NOT NULL,
-    INDEX idx_horario (horaInicio, horaFin)
+    hora_inicio TIMESTAMP NOT NULL,
+    hora_fin TIMESTAMP NOT NULL,
+    INDEX idx_horario (hora_inicio, hora_fin)
 );
 
 -- Tabla administrador
