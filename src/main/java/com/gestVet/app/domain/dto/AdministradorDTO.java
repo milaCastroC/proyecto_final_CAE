@@ -16,16 +16,12 @@ public class AdministradorDTO {
     @NotNull(message = "El usuario es obligatorio")
     private Long usuarioId;
 
-    @NotNull(message = "El privilegio es obligatorio")
-    private Long privilegioId;
-
     @NotNull(message = "El cargo es obligatorio")
     private String cargo;
 
-    public AdministradorDTO(Long administradorId, Long usuarioId, Long privilegioId, String cargo) {
+    public AdministradorDTO(Long administradorId, Long usuarioId, String cargo) {
         this.administradorId = administradorId;
         this.usuarioId = usuarioId;
-        this.privilegioId = privilegioId;
         this.cargo = cargo;
     }
 }
