@@ -1,4 +1,4 @@
-package com.gestVet.app.persistence.exceptions;
+package com.gestVet.app.exceptions;
 
 public class CitaModificacionNoPermitidaException extends Exception {
     public CitaModificacionNoPermitidaException() {

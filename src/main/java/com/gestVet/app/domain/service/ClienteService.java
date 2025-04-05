@@ -2,8 +2,8 @@ package com.gestVet.app.domain.service;
 
 import com.gestVet.app.domain.dto.ClienteDTO;
 import com.gestVet.app.domain.repository.ClienteRepository;
-import com.gestVet.app.persistence.exceptions.ClienteNotFoundException;
-import com.gestVet.app.persistence.exceptions.PersonaIdDuplicadoException;
+import com.gestVet.app.exceptions.ClienteNotFoundException;
+import com.gestVet.app.exceptions.PersonaIdDuplicadoException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

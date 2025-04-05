@@ -2,8 +2,8 @@ package com.gestVet.app.web.controllers;
 
 import com.gestVet.app.domain.dto.CitaDTO;
 import com.gestVet.app.domain.service.CitaService;
-import com.gestVet.app.persistence.exceptions.CitaModificacionNoPermitidaException;
-import com.gestVet.app.persistence.exceptions.CitaNotFoundException;
+import com.gestVet.app.exceptions.CitaModificacionNoPermitidaException;
+import com.gestVet.app.exceptions.CitaNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

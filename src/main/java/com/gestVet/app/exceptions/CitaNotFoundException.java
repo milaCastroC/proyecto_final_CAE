@@ -1,4 +1,4 @@
-package com.gestVet.app.persistence.exceptions;
+package com.gestVet.app.exceptions;
 
 public class CitaNotFoundException extends Exception {
     public CitaNotFoundException() {

@@ -2,8 +2,8 @@ package com.gestVet.app.web.controllers;
 
 import com.gestVet.app.domain.dto.ClienteDTO;
 import com.gestVet.app.domain.service.ClienteService;
-import com.gestVet.app.persistence.exceptions.ClienteNotFoundException;
-import com.gestVet.app.persistence.exceptions.PersonaIdDuplicadoException;
+import com.gestVet.app.exceptions.ClienteNotFoundException;
+import com.gestVet.app.exceptions.PersonaIdDuplicadoException;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

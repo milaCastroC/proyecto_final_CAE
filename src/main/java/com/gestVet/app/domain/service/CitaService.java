@@ -2,8 +2,8 @@ package com.gestVet.app.domain.service;
 
 import com.gestVet.app.domain.dto.CitaDTO;
 import com.gestVet.app.domain.repository.CitaRepository;
-import com.gestVet.app.persistence.exceptions.CitaModificacionNoPermitidaException;
-import com.gestVet.app.persistence.exceptions.CitaNotFoundException;
+import com.gestVet.app.exceptions.CitaModificacionNoPermitidaException;
+import com.gestVet.app.exceptions.CitaNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
