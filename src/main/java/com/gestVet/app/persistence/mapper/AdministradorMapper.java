@@ -11,6 +11,7 @@ import org.mapstruct.InheritInverseConfiguration;
 public interface AdministradorMapper {
 
     // Mapeo Administrador a AdministradorDTO
+    @Mapping(source = "personaId", target = "personaId") // Heredado de Usuario/Persona
     @Mapping(source = "cargo", target = "cargo")
     @Mapping(source = "area", target = "area")
     AdministradorDTO toDto(Administrador administrador);

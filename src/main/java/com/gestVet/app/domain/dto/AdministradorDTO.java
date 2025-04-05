@@ -20,5 +20,6 @@ public class AdministradorDTO extends UsuarioDTO{
     public AdministradorDTO(Long personaId, String identificacion, String tipoIdentificacion, String nombre, String apellido, String telefono, String email, String direccion, String username, String cargo) {
         super(personaId, identificacion, tipoIdentificacion, nombre, apellido, telefono, email, direccion, username);
         this.cargo = cargo;
+        this.area = area;
     }
 }
