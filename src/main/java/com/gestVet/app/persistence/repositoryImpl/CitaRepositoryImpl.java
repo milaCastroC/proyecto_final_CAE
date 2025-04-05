@@ -95,7 +95,14 @@ public class CitaRepositoryImpl implements CitaRepository {
     }
 
     @Override
+    public long count() {
+        return citaCrudRepository.count();
+    }
+
+    @Override
     public boolean existsById(Long id) {
         return citaCrudRepository.existsById(id);
     }
+
+
 }

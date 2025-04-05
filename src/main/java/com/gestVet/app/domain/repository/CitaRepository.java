@@ -38,5 +38,8 @@ public interface CitaRepository {
     // Consultar Cita por Veterinario, fecha y estado
     Iterable<CitaDTO> findByVeterinarioIdAndFechaAndEstado(Long vetId, LocalDateTime fecha, String estado);
 
+    // Contar todas las citas
+    long count();
+
     // TODO Validar horarios del veterinario
 }
