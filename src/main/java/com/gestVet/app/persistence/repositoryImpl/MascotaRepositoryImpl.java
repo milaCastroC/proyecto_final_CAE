@@ -69,7 +69,7 @@ public class MascotaRepositoryImpl implements MascotaRepository {
 
     @Override
     public List<MascotaDTO> findByPropietarioId(Long propietarioId) {
-        List<Mascota> mascotas = mascotaCrudRepository.findByPropietario_ClienteId(propietarioId);
+        List<Mascota> mascotas = mascotaCrudRepository.findByPropietario_PersonaId(propietarioId);
         return mascotas.stream()
                 .map(mascotaMapper::toDto)
                 .collect(Collectors.toList());
@@ -77,7 +77,7 @@ public class MascotaRepositoryImpl implements MascotaRepository {
 
     @Override
     public boolean existsByPropietarioId(Long propietarioId) {
-        return mascotaCrudRepository.existsByPropietario_ClienteId(propietarioId);
+        return mascotaCrudRepository.existsByPropietario_PersonaId(propietarioId);
     }
 
     @Override

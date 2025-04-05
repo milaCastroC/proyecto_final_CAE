@@ -11,15 +11,8 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "cliente")
-public class Cliente {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cliente_id", nullable = false)
-    private Long clienteId;
-
-    @OneToOne
-    @JoinColumn(name = "persona_id")
-    private Persona persona;
+@PrimaryKeyJoinColumn(name = "persona_id")
+public class Cliente extends Persona{
 
     @Column(name = "es_propietario", nullable = false)
     private Boolean esPropietario = false;

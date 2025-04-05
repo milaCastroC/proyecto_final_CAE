@@ -24,13 +24,13 @@ public interface ClienteFacturaMapper {
     // Métodos de mapeo para las relaciones
 
     default Long mapCliente(Cliente cliente) {
-        return cliente != null ? cliente.getClienteId() : null;
+        return cliente != null ? cliente.getPersonaId() : null;
     }
 
     default Cliente mapCliente(Long clienteId) {
         if (clienteId != null) {
             Cliente cliente = new Cliente();
-            cliente.setClienteId(clienteId);
+            cliente.setPersonaId(clienteId);
             return cliente;
         }
         return null;

@@ -68,7 +68,7 @@ public class ClienteRepositoryImpl implements ClienteRepository {
 
     @Override
     public boolean existsByPersonaId(Long personaId) {
-        if(!clienteCrudRepository.existsByPersonaId(personaId).isEmpty()){
+        if(!clienteCrudRepository.existsById(personaId)){
             return true;
         }
         // Si no existe, retorna false  
@@ -77,7 +77,7 @@ public class ClienteRepositoryImpl implements ClienteRepository {
 
     @Override
     public boolean existsByClienteIdAndMascotasIsNotEmpty(Long clienteId) {
-        return clienteCrudRepository.existsByClienteIdAndMascotasIsNotEmpty(clienteId);
+        return clienteCrudRepository.existsMascotasByClienteId(clienteId);
     }
 
     /**@Override

@@ -10,8 +10,8 @@ public interface MascotaCrudRepository extends CrudRepository<Mascota, Long> {
    // List<Mascota> findByPropietarioId(Long propietarioId);
     // boolean existsByPropietarioId(Long propietarioId);
     
-    List<Mascota> findByPropietario_ClienteId(Long clienteId);
-    boolean existsByPropietario_ClienteId(Long clienteId);
+    List<Mascota> findByPropietario_PersonaId(Long clienteId);
+    boolean existsByPropietario_PersonaId(Long clienteId);
 
 
     @Query("SELECT CASE WHEN COUNT(c) > 0 THEN true ELSE false END FROM Cita c WHERE c.mascota.mascotaId = :mascotaId")

@@ -30,11 +30,7 @@ public class PersonaDTO {
 
     private String direccion;
 
-    private Long clienteId;
-
-    private Long usuarioId;
-
-    public PersonaDTO(Long personaId, String identificacion, String tipoIdentificacion, String nombre, String apellido, String telefono, String email, String direccion, Long clienteId, Long usuarioId) {
+    public PersonaDTO(Long personaId, String identificacion, String tipoIdentificacion, String nombre, String apellido, String telefono, String email, String direccion) {
         this.personaId = personaId;
         this.identificacion = identificacion;
         this.tipoIdentificacion = tipoIdentificacion;
@@ -43,7 +39,5 @@ public class PersonaDTO {
         this.telefono = telefono;
         this.email = email;
         this.direccion = direccion;
-        this.clienteId = clienteId;
-        this.usuarioId = usuarioId;
     }
 }

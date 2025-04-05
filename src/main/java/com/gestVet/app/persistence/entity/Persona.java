@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "persona")
 public class Persona {
     @Id
@@ -35,9 +36,4 @@ public class Persona {
     @Column(name = "direccion")
     private String direccion;
 
-    @OneToOne(mappedBy = "persona")
-    private Cliente cliente;
-
-    @OneToOne(mappedBy = "persona")
-    private Usuario usuario;
 }

@@ -68,7 +68,7 @@ public class ClienteController {
     })
     @PutMapping("/update/{id}")
     public ResponseEntity<ClienteDTO> updateCliente(@PathVariable Long id, @RequestBody ClienteDTO clienteDTO) {
-        clienteDTO.setClienteId(id);
+        clienteDTO.setPersonaId(id);
         ClienteDTO updatedCliente = null;
         try {
             updatedCliente = clienteService.update(clienteDTO);

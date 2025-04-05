@@ -29,19 +29,19 @@ public class ClienteService {
     // Guardar un registro
  
     public ClienteDTO save(ClienteDTO clienteDTO) throws PersonaIdDuplicadoException {
-        if (validarPersonaId(clienteDTO.getPersonaId())) {
+//        if (validarPersonaId(clienteDTO.getPersonaId())) {
             return clienteRepository.save(clienteDTO);
-        }
-        throw new PersonaIdDuplicadoException();
+//        }
+//        throw new PersonaIdDuplicadoException();
     }
 
     // Actualizar un registro
     public ClienteDTO update(ClienteDTO clienteDTO) throws ClienteNotFoundException, PersonaIdDuplicadoException {
-        if (!existsById(clienteDTO.getClienteId())) {
+        if (!existsById(clienteDTO.getPersonaId())) {
             throw new ClienteNotFoundException();
         }
         
-        ClienteDTO clienteOriginal = findById(clienteDTO.getClienteId()).orElse(null);
+        ClienteDTO clienteOriginal = findById(clienteDTO.getPersonaId()).orElse(null);
         
         if (!clienteOriginal.getPersonaId().equals(clienteDTO.getPersonaId())) {
             if (validarPersonaId(clienteDTO.getPersonaId())) {

@@ -6,22 +6,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
+
 @Getter
 @Setter
 @NoArgsConstructor
-public class ClienteDTO {
-    private Long clienteId;
-
-    @NotNull(message = "La persona es obligatoria")
-    private Long personaId;
+public class ClienteDTO extends PersonaDTO{
 
     @NotNull(message = "Es obligatorio decir si es o no propietario")
     private Boolean esPropietario;
 
-    public ClienteDTO(Long clienteId, Long personaId, Boolean esPropietario) {
-        this.clienteId = clienteId;
-        this.personaId = personaId;
+    public ClienteDTO(Long personaId, String identificacion, String tipoIdentificacion, String nombre, String apellido, String telefono, String email, String direccion, Boolean esPropietario) {
+        super(personaId, identificacion, tipoIdentificacion, nombre, apellido, telefono, email, direccion);
         this.esPropietario = esPropietario;
     }
 }

@@ -18,39 +18,35 @@ public interface PersonaMapper {
     @Mapping(source = "telefono", target = "telefono")
     @Mapping(source = "email", target = "email")
     @Mapping(source = "direccion", target = "direccion")
-    @Mapping(source = "cliente", target = "clienteId")
-    @Mapping(source = "usuario", target = "usuarioId")
     PersonaDTO toDto(Persona persona);
 
     // Mapeo inverso de PersonaDTO a Persona
     @InheritInverseConfiguration
-    @Mapping(target = "cliente", source = "clienteId")
-    @Mapping(target = "usuario", source = "usuarioId")
     Persona toEntity(PersonaDTO personaDTO);
 
-    default Long mapCliente(Cliente cliente) {
-        return cliente != null ? cliente.getClienteId() : null;
-    }
-
-    default Cliente mapCliente(Long clienteId) {
-        if (clienteId != null) {
-            Cliente cliente = new Cliente();
-            cliente.setClienteId(clienteId);
-            return cliente;
-        }
-        return null;
-    }
-
-    default Long mapUsuario(Usuario usuario) {
-        return usuario != null ? usuario.getUsuarioId() : null;
-    }
-
-    default Usuario mapUsuario(Long usuarioId) {
-        if (usuarioId != null) {
-            Usuario usuario = new Usuario();
-            usuario.setUsuarioId(usuarioId);
-            return usuario;
-        }
-        return null;
-    }
+//    default Long mapCliente(Cliente cliente) {
+//        return cliente != null ? cliente.getClienteId() : null;
+//    }
+//
+//    default Cliente mapCliente(Long clienteId) {
+//        if (clienteId != null) {
+//            Cliente cliente = new Cliente();
+//            cliente.setClienteId(clienteId);
+//            return cliente;
+//        }
+//        return null;
+//    }
+//
+//    default Long mapUsuario(Usuario usuario) {
+//        return usuario != null ? usuario.getUsuarioId() : null;
+//    }
+//
+//    default Usuario mapUsuario(Long usuarioId) {
+//        if (usuarioId != null) {
+//            Usuario usuario = new Usuario();
+//            usuario.setUsuarioId(usuarioId);
+//            return usuario;
+//        }
+//        return null;
+//    }
 }

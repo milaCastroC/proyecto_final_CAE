@@ -31,13 +31,13 @@ public interface MascotaMapper {
 
     // Métodos de conversión para las relaciones
     default Long mapCliente(Cliente Cliente) {
-        return Cliente != null ? Cliente.getClienteId() : null;
+        return Cliente != null ? Cliente.getPersonaId() : null;
     }
 
     default Cliente mapCliente(Long ClienteId) {
         if (ClienteId != null) {
             Cliente Cliente = new Cliente();
-            Cliente.setClienteId(ClienteId);
+            Cliente.setPersonaId(ClienteId);
             return Cliente;
         }
         return null;
