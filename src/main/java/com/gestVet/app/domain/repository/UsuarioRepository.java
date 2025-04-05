@@ -9,4 +9,7 @@ public interface UsuarioRepository {
     boolean existsById(Long id);
 
     Optional<UsuarioDTO> findById(Long id);
+
+    Optional<UsuarioDTO> login(String username, String password);
+
 }

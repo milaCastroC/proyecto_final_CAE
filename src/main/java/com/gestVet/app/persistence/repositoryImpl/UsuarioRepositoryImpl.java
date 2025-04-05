@@ -28,4 +28,11 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         return usuarioCrudRepository.findById(id)
                 .map(usuarioMapper::toDto);
     }
+
+    @Override
+    public Optional<UsuarioDTO> login(String username, String password) {
+        return usuarioCrudRepository
+                .login(username, password)
+                .map(usuarioMapper::toDto);
+    }
 }

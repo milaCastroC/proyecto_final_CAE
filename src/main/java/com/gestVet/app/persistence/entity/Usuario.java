@@ -9,6 +9,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "usuario")
 @PrimaryKeyJoinColumn(name = "persona_id")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "rol", discriminatorType = DiscriminatorType.STRING)
 public class Usuario extends Persona{
 
     @Column(name = "username", nullable = false, length = 50)

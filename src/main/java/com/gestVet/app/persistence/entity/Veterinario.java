@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "veterinario")
 @PrimaryKeyJoinColumn(name = "persona_id")
+@DiscriminatorValue("VET")
 public class Veterinario extends Usuario{
 
     @Column(name = "especialidad", nullable = false, length = 200)
