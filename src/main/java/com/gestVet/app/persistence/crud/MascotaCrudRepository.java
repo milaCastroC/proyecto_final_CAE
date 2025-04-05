@@ -7,8 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface MascotaCrudRepository extends CrudRepository<Mascota, Long> {
-   // List<Mascota> findByPropietarioId(Long propietarioId);
-    // boolean existsByPropietarioId(Long propietarioId);
+    //List<Mascota> findByPropietarioId(Long propietarioId);
+    //boolean existsByPropietarioId(Long propietarioId);
     
     List<Mascota> findByPropietario_PersonaId(Long clienteId);
     boolean existsByPropietario_PersonaId(Long clienteId);

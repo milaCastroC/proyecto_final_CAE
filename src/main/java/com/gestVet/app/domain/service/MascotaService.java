@@ -63,4 +63,11 @@ public class MascotaService {
         }
         return mascotaRepository.findByPropietarioId(propietarioId);
     }
+
+    // Método para ItemHistorialService.
+    @Transactional(readOnly = true)
+    public boolean existsById(Long id) {
+        return mascotaRepository.existsById(id);
+    }
+
 }

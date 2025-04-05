@@ -8,6 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Data
 @NoArgsConstructor
 public class VeterinarioDTO extends UsuarioDTO{
 

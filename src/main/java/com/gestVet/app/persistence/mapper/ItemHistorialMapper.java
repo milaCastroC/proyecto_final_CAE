@@ -4,30 +4,39 @@ import com.gestVet.app.domain.dto.ItemHistorialDTO;
 import com.gestVet.app.persistence.entity.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.InheritInverseConfiguration;
 
-@Mapper(componentModel = "spring")
+import java.util.List;
+
+@Mapper(componentModel = "spring", uses = {MascotaMapper.class})
 public interface ItemHistorialMapper {
 
-    // Mapeo de ItemHistorial a ItemHistorialDTO
     @Mapping(source = "itemHistorialId", target = "itemHistorialId")
-    @Mapping(source = "mascota", target = "mascotaId")
+    @Mapping(source = "mascota.mascotaId", target = "mascotaId")
     @Mapping(source = "fecha", target = "fecha")
     @Mapping(source = "diagnostico", target = "diagnostico")
     @Mapping(source = "tratamiento", target = "tratamiento")
     @Mapping(source = "observaciones", target = "observaciones")
     @Mapping(source = "tipo", target = "tipo")
+    @Mapping(source = "citaId", target = "citaId")
+    @Mapping(source = "tipoCita", target = "tipoCita")
     ItemHistorialDTO toDto(ItemHistorial itemHistorial);
 
-    // Mapeo inverso de ItemHistorialDTO a ItemHistorial
-    @InheritInverseConfiguration
-    ItemHistorial toEntity(ItemHistorialDTO itemHistorialDTO);
+    List<ItemHistorialDTO> toDtoList(List<ItemHistorial> itemHistorialList);
 
-    default Long mapmascota(Mascota mascota) {
+    @InheritInverseConfiguration
+    @Mapping(target = "mascota", source = "mascotaId")
+    ItemHistorial toEntity(ItemHistorialDTO itemHistorialDTO);
+    
+    @Mapping(target = "itemHistorialId", ignore = true)
+    void updateEntityFromDto(ItemHistorialDTO dto, @MappingTarget ItemHistorial entity);
+
+    default Long mapMascota(Mascota mascota) {
         return mascota != null ? mascota.getMascotaId() : null;
     }
 
-    default Mascota mapmascota(Long mascotaId) {
+    default Mascota mapMascota(Long mascotaId) {
         if (mascotaId != null) {
             Mascota mascota = new Mascota();
             mascota.setMascotaId(mascotaId);
