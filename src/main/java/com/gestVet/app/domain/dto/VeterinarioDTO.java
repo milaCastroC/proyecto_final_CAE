@@ -6,12 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
 @Getter
 @Setter
 @NoArgsConstructor
-public class VeterinarioDTO {
-    private Long veterinarioId;
+public class VeterinarioDTO extends UsuarioDTO{
 
     @NotNull(message = "La especialidad es obligatoria")
     private String especialidad;
@@ -19,13 +17,9 @@ public class VeterinarioDTO {
     @NotNull(message = "La tarjeta profesional es obligatoria")
     private String tarjetaProfesional;
 
-    @NotNull(message = "El usuario es obligatorio")
-    private Long usuarioId;
-
-    public VeterinarioDTO(Long veterinarioId, String especialidad, String tarjetaProfesional, Long usuarioId) {
-        this.veterinarioId = veterinarioId;
+    public VeterinarioDTO(Long personaId, String identificacion, String tipoIdentificacion, String nombre, String apellido, String telefono, String email, String direccion, String username, String especialidad) {
+        super(personaId, identificacion, tipoIdentificacion, nombre, apellido, telefono, email, direccion, username);
         this.especialidad = especialidad;
-        this.tarjetaProfesional = tarjetaProfesional;
-        this.usuarioId = usuarioId;
     }
+
 }

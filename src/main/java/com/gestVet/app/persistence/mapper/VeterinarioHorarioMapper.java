@@ -24,13 +24,13 @@ public interface VeterinarioHorarioMapper {
     // Métodos de conversión para las relaciones
 
     default Long mapVeterinario(Veterinario veterinario) {
-        return veterinario != null ? veterinario.getVeterinarioId() : null;
+        return veterinario != null ? veterinario.getPersonaId() : null;
     }
 
     default Veterinario mapVeterinario(Long veterinarioId) {
         if (veterinarioId != null) {
             Veterinario veterinario = new Veterinario();
-            veterinario.setVeterinarioId(veterinarioId);
+            veterinario.setPersonaId(veterinarioId);
             return veterinario;
         }
         return null;

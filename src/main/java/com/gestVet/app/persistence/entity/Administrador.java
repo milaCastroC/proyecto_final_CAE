@@ -1,13 +1,6 @@
 package com.gestVet.app.persistence.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,16 +8,13 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "administrador")
-public class Administrador {
-     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "administrador_id", nullable = false)
-    private Long id;
+@PrimaryKeyJoinColumn(name = "persona_id") // PK heredada de Usuario/Persona
+public class Administrador extends Usuario{
 
+    @Column(name = "cargo")
     private String cargo;
 
-    @OneToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
-   
+    @Column(name = "area")
+    private String area;
+
 }

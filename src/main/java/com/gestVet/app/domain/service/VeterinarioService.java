@@ -33,10 +33,10 @@ public class VeterinarioService {
 
     // Actualizar un registro
     public VeterinarioDTO update(VeterinarioDTO veterinarioDTO) {
-        if(!existsById(veterinarioDTO.getVeterinarioId())){
+        if(!existsById(veterinarioDTO.getPersonaId())){
             throw new IllegalArgumentException("El veterinario que busca no existe");
         }
-        VeterinarioDTO vetOriginal = findById(veterinarioDTO.getVeterinarioId()).orElse(null);
+        VeterinarioDTO vetOriginal = findById(veterinarioDTO.getPersonaId()).orElse(null);
 
         if(!vetOriginal.getTarjetaProfesional().equals(veterinarioDTO.getTarjetaProfesional())) {
             if(validarTarjetaProfesional(veterinarioDTO.getTarjetaProfesional())) {

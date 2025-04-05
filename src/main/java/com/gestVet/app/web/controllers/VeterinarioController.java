@@ -64,7 +64,7 @@ public class VeterinarioController {
     })
     @PutMapping("/update/{id}")
     public ResponseEntity<VeterinarioDTO> updateVeterinario(@PathVariable Long id, @RequestBody VeterinarioDTO veterinarioDTO) {
-        veterinarioDTO.setVeterinarioId(id);
+        veterinarioDTO.setPersonaId(id);
         VeterinarioDTO updatedVeterinario = veterinarioService.update(veterinarioDTO);
         return ResponseEntity.ok(updatedVeterinario);
     }

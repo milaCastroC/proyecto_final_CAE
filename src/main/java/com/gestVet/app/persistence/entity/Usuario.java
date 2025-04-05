@@ -8,11 +8,8 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "usuario")
-public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "usuario_id", nullable = false)
-    private Long usuarioId;
+@PrimaryKeyJoinColumn(name = "persona_id")
+public class Usuario extends Persona{
 
     @Column(name = "username", nullable = false, length = 50)
     private String username;
@@ -23,13 +20,4 @@ public class Usuario {
     @Column(name = "rol", nullable = false, length = 20)
     private String rol;
 
-    @OneToOne
-    @JoinColumn(name = "persona_id")
-    private Persona persona;
-
-    @OneToOne(mappedBy = "usuario")
-    private Administrador administrador;
-
-    @OneToOne(mappedBy = "usuario")
-    private Veterinario veterinario;
 }

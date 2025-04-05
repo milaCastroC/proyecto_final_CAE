@@ -11,21 +11,14 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "veterinario")
-public class Veterinario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "veterinario_id", nullable = false)
-    private Long veterinarioId;
+@PrimaryKeyJoinColumn(name = "persona_id")
+public class Veterinario extends Usuario{
 
     @Column(name = "especialidad", nullable = false, length = 200)
     private String especialidad;
 
     @Column(name = "tarjeta_profesional", nullable = false, length = 30)
     private String tarjetaProfesional;
-
-    @OneToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
 
     @OneToMany(mappedBy = "veterinario")
     private List<Cita> citas = new ArrayList<>();
