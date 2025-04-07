@@ -13,7 +13,6 @@ import jakarta.validation.constraints.PastOrPresent;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class ItemHistorialDTO {
     private Long itemHistorialId;
 
@@ -38,5 +37,4 @@ public class ItemHistorialDTO {
     
     // Añadidos para soportar la creación desde cita
     private Long citaId;
-    private String tipoCita;
 }

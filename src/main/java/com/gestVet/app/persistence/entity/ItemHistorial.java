@@ -40,7 +40,5 @@ public class ItemHistorial {
     
     @Column(name = "cita_id")
     private Long citaId;
-    
-    @Column(name = "tipo_cita", length = 100)
-    private String tipoCita;
+
 }

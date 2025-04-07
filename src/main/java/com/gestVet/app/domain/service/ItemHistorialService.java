@@ -45,7 +45,6 @@ public class ItemHistorialService {
         }
 
         itemDTO.setFecha(cita.getFecha().toLocalDate());
-        itemDTO.setTipoCita(cita.getTipoCita());
         itemDTO.setCitaId(citaId);
 
         return repository.save(itemDTO);
