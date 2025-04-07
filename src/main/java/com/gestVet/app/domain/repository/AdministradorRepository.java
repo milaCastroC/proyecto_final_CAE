@@ -30,4 +30,6 @@ public interface AdministradorRepository {
     boolean existsByUsuarioId(Long usuarioId);
 
     Optional<AdministradorDTO> findByUsuarioId(Long usuarioId);
+
+    boolean existsByCargoAndAreaAndIdNot(String cargo, String area, Long id);
 }

@@ -12,4 +12,5 @@ public interface UsuarioRepository {
 
     Optional<UsuarioDTO> login(String username, String password);
 
+    boolean existsByIdentificacionAndTipoIdentificacion(String identificacion, String tipoIdentificacion);
 }

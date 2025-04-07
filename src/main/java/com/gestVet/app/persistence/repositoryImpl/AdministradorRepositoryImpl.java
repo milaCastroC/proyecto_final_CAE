@@ -79,4 +79,14 @@ public class AdministradorRepositoryImpl implements AdministradorRepository {
         return administradorCrudRepository.findByPersonaId(usuarioId)
                 .map(administradorMapper::toDto);
     }
+
+    @Override
+    public boolean existsByCargoAndAreaAndIdNot(String cargo, String area, Long id) {
+        return ((List<Administrador>) administradorCrudRepository.findAll()).stream()
+                .filter(admin -> !admin.getPersonaId().equals(id))
+                .anyMatch(admin ->
+                        admin.getCargo().equalsIgnoreCase(cargo) &&
+                                admin.getArea().equalsIgnoreCase(area)
+                );
+    }
 }

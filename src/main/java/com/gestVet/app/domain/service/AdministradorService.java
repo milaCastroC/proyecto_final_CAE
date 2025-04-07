@@ -3,6 +3,7 @@ package com.gestVet.app.domain.service;
 import com.gestVet.app.domain.dto.AdministradorDTO;
 import com.gestVet.app.domain.repository.AdministradorRepository;
 import com.gestVet.app.domain.repository.UsuarioRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +30,13 @@ public class AdministradorService {
 
     //Guardar un administrador
     public AdministradorDTO save(AdministradorDTO adminDTO) {
-        // Validar que el usuario exista
-        validarExistenciaUsuario(adminDTO.getPersonaId());
+        //Validar que no exista otra persona con la misma identificación
+        if (usuarioRepository.existsByIdentificacionAndTipoIdentificacion(
+                adminDTO.getIdentificacion(),
+                adminDTO.getTipoIdentificacion())) {
+            throw new IllegalArgumentException("Ya existe una persona con esta identificación y tipo");
+        }
+
         // Validar que el usuario no esté ya asignado a otro administrador
         validarUsuarioUnico(adminDTO.getPersonaId());
 
@@ -42,18 +48,37 @@ public class AdministradorService {
 
     //Actualizar un administrador
     public AdministradorDTO update(Long id, AdministradorDTO adminDTO) {
-        if (!administradorRepository.existsById(adminDTO.getPersonaId())) {
-            throw new IllegalArgumentException("Administrador no encontrado");
+
+        AdministradorDTO adminExistente = administradorRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Administrador no encontrado"));
+
+        //Actualizar solo los campos permitidos (telefono, email, direccion, cargo, area)
+        if (adminDTO.getTelefono() != null) {
+            adminExistente.setTelefono(adminDTO.getTelefono());
+        }
+        if (adminDTO.getEmail() != null) {
+            adminExistente.setEmail(adminDTO.getEmail());
+        }
+        if (adminDTO.getDireccion() != null) {
+            adminExistente.setDireccion(adminDTO.getDireccion());
         }
 
-        // Validar que el usuario exista
-        validarExistenciaUsuario(adminDTO.getPersonaId());
+        // Validar y actualizar cargo y área
+        if (adminDTO.getCargo() != null || adminDTO.getArea() != null) {
+            String nuevoCargo = adminDTO.getCargo() != null ? adminDTO.getCargo() : adminExistente.getCargo();
+            String nuevaArea = adminDTO.getArea() != null ? adminDTO.getArea() : adminExistente.getArea();
 
-        // Validar que el usuario no esté asignado a otro administrador (excepto este mismo)
-        validarUsuarioUnicoParaActualizacion(id, adminDTO.getPersonaId());
+            // Verificar si existe otro administrador con ese cargo y área (excluyendo el actual)
+            if (administradorRepository.existsByCargoAndAreaAndIdNot(nuevoCargo, nuevaArea, id)) {
+                throw new IllegalArgumentException("Ya existe otro administrador con ese cargo en el área especificada");
+            }
 
-        adminDTO.setPersonaId(id);
-        return administradorRepository.update(adminDTO);
+            // Actualizar campos
+            adminExistente.setCargo(nuevoCargo);
+            adminExistente.setArea(nuevaArea);
+        }
+
+        return administradorRepository.update(adminExistente);
     }
 
     //Eliminar un administrador

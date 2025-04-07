@@ -35,4 +35,10 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
                 .login(username, password)
                 .map(usuarioMapper::toDto);
     }
+
+    @Override
+    public boolean existsByIdentificacionAndTipoIdentificacion(String identificacion, String tipoIdentificacion) {
+        return usuarioCrudRepository.existsByIdentificacionAndTipoIdentificacion(identificacion, tipoIdentificacion);
+    }
+
 }

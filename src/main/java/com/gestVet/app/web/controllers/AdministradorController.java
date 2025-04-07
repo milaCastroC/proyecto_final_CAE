@@ -104,7 +104,7 @@ public class AdministradorController {
             @ApiResponse(responseCode = "500", description = "Error interno del servidor - Problema al procesar la solicitud"),
             @ApiResponse(responseCode = "503", description = "Servicio no disponible - El servidor está en mantenimiento o sobrecargado")
     })
-    @PutMapping
+    @PutMapping("/update/{id}")
     public ResponseEntity<?> updateAdministrador(@PathVariable Long id, @RequestBody AdministradorDTO administradorDTO) {
         try {
             AdministradorDTO adminActualizado = administradorService.update(id, administradorDTO);
