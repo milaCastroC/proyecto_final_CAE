@@ -13,6 +13,7 @@ public interface VeterinarioHorarioMapper {
     @Mapping(source = "veterinarioHorarioId", target = "veterinarioHorarioId")
     @Mapping(source = "veterinario", target = "veterinarioId")
     @Mapping(source = "horario", target = "horarioId")
+    @Mapping(source = "diaSemana", target = "diaSemana")
     VeterinarioHorarioDTO toDto(VeterinarioHorario veterinarioHorario);
 
     // Mapeo inverso de VeterinarioHorarioDTO a VeterinarioHorario

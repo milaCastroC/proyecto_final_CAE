@@ -7,7 +7,7 @@ import com.gestVet.app.exceptions.CitaNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -58,8 +58,8 @@ public class CitaService {
     }
 
     // Validar que la fecha sea futura
-    private boolean validarFechaFutura(LocalDateTime fecha) {
-        return fecha != null && fecha.isAfter(LocalDateTime.now());
+    private boolean validarFechaFutura(LocalDate fecha) {
+        return fecha != null && fecha.isAfter(LocalDate.now());
     }
 
     // Consultar Citas por veterinario
@@ -72,7 +72,7 @@ public class CitaService {
         return citaRepository.findByMascotaId(id);
     }
 
-    public Iterable<CitaDTO> findByFecha(LocalDateTime fecha){
+    public Iterable<CitaDTO> findByFecha(LocalDate fecha){
         return citaRepository.findByFecha(fecha);
     }
 
@@ -82,7 +82,7 @@ public class CitaService {
     }
 
     // Consultar Cita por Veterinario, fecha y estado
-    public Iterable<CitaDTO> findByVeterinarioIdAndFechaAndEstado(Long vetId, LocalDateTime fecha, String estado){
+    public Iterable<CitaDTO> findByVeterinarioIdAndFechaAndEstado(Long vetId, LocalDate fecha, String estado){
         return citaRepository.findByVeterinarioIdAndFechaAndEstado(vetId, fecha, estado);
     }
 

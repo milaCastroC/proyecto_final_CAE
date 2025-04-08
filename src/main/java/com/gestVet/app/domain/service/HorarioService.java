@@ -5,7 +5,7 @@ import com.gestVet.app.domain.repository.HorarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Optional;
 
 @Service
@@ -48,7 +48,7 @@ public class HorarioService {
     }
 
     // Validar las horas
-    public boolean validarHorasValidas(LocalDateTime horaInicio, LocalDateTime horaFin) {
+    public boolean validarHorasValidas(LocalTime horaInicio, LocalTime horaFin) {
         if(horaInicio == null || horaFin == null) {
             return false;
         }
