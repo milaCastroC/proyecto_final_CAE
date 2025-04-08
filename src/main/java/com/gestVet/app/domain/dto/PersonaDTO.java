@@ -1,6 +1,9 @@
 package com.gestVet.app.domain.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,19 +16,22 @@ import lombok.Setter;
 public class PersonaDTO {
     private Long personaId;
 
+    @NotBlank(message = "El tipo de identificación es obligatorio")
     private String tipoIdentificacion;
 
-    @NotNull(message = "La identificación es obligatoria")
+    @NotBlank(message = "La identificación es obligatoria")
     private String identificacion;
 
-    @NotNull(message = "El nombre es obligatorio")
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
 
-    @NotNull(message = "El apellido es obligatorio")
+    @NotBlank(message = "El apellido es obligatorio")
     private String apellido;
 
+    @Pattern(regexp = "^$|\\d{10}", message = "El teléfono debe tener 10 dígitos o estar vacío")
     private String telefono;
 
+    @Email(message = "El correo no tiene un formato válido")
     private String email;
 
     private String direccion;
