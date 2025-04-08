@@ -13,7 +13,7 @@ public interface UsuarioMapper {
     @Mapping(source = "personaId", target = "personaId") // PK heredada
     @Mapping(source = "username", target = "username")
     @Mapping(source = "password", target = "password")
-    @Mapping(source = "rol", target = "rol")
+//    @Mapping(source = "rol", target = "rol")
     UsuarioDTO toDto(Usuario usuario);
 
     // Mapeo inverso de UsuarioDTO a Usuario

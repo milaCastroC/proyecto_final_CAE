@@ -9,6 +9,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "administrador")
 @PrimaryKeyJoinColumn(name = "persona_id") // PK heredada de Usuario/Persona
+@DiscriminatorValue("ADMIN")
 public class Administrador extends Usuario{
 
     @Column(name = "cargo")
