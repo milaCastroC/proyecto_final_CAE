@@ -44,7 +44,7 @@ public class ItemHistorialService {
             throw new MascotaCitaMismatchException();
         }
 
-        itemDTO.setFecha(cita.getFecha().toLocalDate());
+        itemDTO.setFecha(cita.getFecha());
         itemDTO.setCitaId(citaId);
 
         return repository.save(itemDTO);
