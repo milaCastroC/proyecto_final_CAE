@@ -8,7 +8,7 @@ import com.gestVet.app.persistence.mapper.CitaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -68,7 +68,7 @@ public class CitaRepositoryImpl implements CitaRepository {
     }
 
     @Override
-    public Iterable<CitaDTO> findByFecha(LocalDateTime fecha) {
+    public Iterable<CitaDTO> findByFecha(LocalDate fecha) {
         Iterable<Cita> citas = citaCrudRepository.findByFecha(fecha);
         return ((List<Cita>) citas)
                 .stream()
@@ -86,7 +86,7 @@ public class CitaRepositoryImpl implements CitaRepository {
     }
 
     @Override
-    public Iterable<CitaDTO> findByVeterinarioIdAndFechaAndEstado(Long vetId, LocalDateTime fecha, String estado) {
+    public Iterable<CitaDTO> findByVeterinarioIdAndFechaAndEstado(Long vetId, LocalDate fecha, String estado) {
         Iterable<Cita> citas = citaCrudRepository.findByVeterinarioIdAndFechaAndEstado(vetId, fecha, estado);
         return ((List<Cita>) citas)
                 .stream()

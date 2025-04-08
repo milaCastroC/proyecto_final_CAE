@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +19,10 @@ public class Horario {
     private Long horarioId;
 
     @Column(name = "horaInicio", nullable = false)
-    private LocalDateTime horaInicio;
+    private LocalTime horaInicio;
 
     @Column(name = "horaFin", nullable = false)
-    private LocalDateTime horaFin;
+    private LocalTime horaFin;
 
     @OneToMany(mappedBy = "horario")
     private List<Cita> citas = new ArrayList<>();

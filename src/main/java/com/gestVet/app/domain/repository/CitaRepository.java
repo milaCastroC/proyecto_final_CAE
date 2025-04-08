@@ -2,7 +2,7 @@ package com.gestVet.app.domain.repository;
 
 import com.gestVet.app.domain.dto.CitaDTO;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Optional;
 
 public interface CitaRepository {
@@ -30,13 +30,13 @@ public interface CitaRepository {
     Iterable<CitaDTO> findByMascotaId(Long id);
 
     // Consultar Citas por fecha
-    Iterable<CitaDTO> findByFecha(LocalDateTime fecha);
+    Iterable<CitaDTO> findByFecha(LocalDate fecha);
 
     // Consultar Citas por estado
     Iterable<CitaDTO> findByEstado(String estado);
 
     // Consultar Cita por Veterinario, fecha y estado
-    Iterable<CitaDTO> findByVeterinarioIdAndFechaAndEstado(Long vetId, LocalDateTime fecha, String estado);
+    Iterable<CitaDTO> findByVeterinarioIdAndFechaAndEstado(Long vetId, LocalDate fecha, String estado);
 
     // Contar todas las citas
     long count();

@@ -4,11 +4,12 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
 
 @Data
 @Getter
@@ -28,7 +29,7 @@ public class CitaDTO {
 
     @NotNull(message = "La fecha es obligatoria")
     @Future(message = "La fecha debe ser en el futuro")
-    private LocalDateTime fecha;
+    private LocalDate fecha;
 
     @NotNull(message = "El tipo de cita es obligatoria")
     private String tipoCita;
@@ -36,7 +37,7 @@ public class CitaDTO {
     @NotBlank(message = "El estado es obligatorio")
     private String estado;
 
-    public CitaDTO(Long citaId, Long mascotaId, Long horarioId, Long veterinarioId, LocalDateTime fecha, String tipoCita, String estado) {
+    public CitaDTO(Long citaId, Long mascotaId, Long horarioId, Long veterinarioId, LocalDate fecha, String tipoCita, String estado) {
         this.citaId = citaId;
         this.mascotaId = mascotaId;
         this.horarioId = horarioId;

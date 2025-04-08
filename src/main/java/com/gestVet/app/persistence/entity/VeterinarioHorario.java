@@ -14,6 +14,9 @@ public class VeterinarioHorario {
     @Column(name = "veterinario_horario_id", nullable = false)
     private Long veterinarioHorarioId;
 
+    @Column(name = "dia_semana", nullable = false)
+    private int diaSemana;
+
     @ManyToOne
     @JoinColumn(name = "veterinario_id")
     private Veterinario veterinario;

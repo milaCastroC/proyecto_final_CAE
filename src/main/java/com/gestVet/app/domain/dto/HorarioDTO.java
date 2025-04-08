@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 
 import jakarta.validation.constraints.Future;
@@ -20,13 +20,13 @@ public class HorarioDTO {
 
     @NotNull(message = "La hora de inicio es obligatoria")
     @Future(message = "La hora de inicio debe ser una fecha futura")
-    private LocalDateTime horaInicio;
+    private LocalTime horaInicio;
 
     @NotNull(message = "La hora de fin es obligatoria")
     @Future(message = "La hora de fin debe ser una fecha futura")
-    private LocalDateTime horaFin;
+    private LocalTime horaFin;
 
-    public HorarioDTO(Long horarioId, LocalDateTime horaInicio, LocalDateTime horaFin) {
+    public HorarioDTO(Long horarioId, LocalTime horaInicio, LocalTime horaFin) {
         this.horarioId = horarioId;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
