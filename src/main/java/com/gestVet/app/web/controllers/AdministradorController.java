@@ -123,7 +123,7 @@ public class AdministradorController {
         try {
             AdministradorDTO adminActualizado = administradorService.update(id, administradorDTO);
             return ResponseEntity.ok(adminActualizado);
-        } catch (IllegalStateException e) {
+        } catch (IllegalStateException | IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
