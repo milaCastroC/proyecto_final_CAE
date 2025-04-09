@@ -82,8 +82,8 @@ CREATE TABLE cliente_factura (
 
 CREATE TABLE horario (
     horario_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    hora_inicio TIMESTAMP NOT NULL,
-    hora_fin TIMESTAMP NOT NULL,
+    hora_inicio TIME NOT NULL,
+    hora_fin TIME NOT NULL,
     INDEX idx_horario (hora_inicio, hora_fin)
 );
 
@@ -91,6 +91,7 @@ CREATE TABLE veterinario_horario (
     veterinario_horario_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     veterinario_id BIGINT NOT NULL,
     horario_id BIGINT NOT NULL,
+    dia_semana INT NOT NULL,
     FOREIGN KEY (veterinario_id) REFERENCES veterinario(persona_id) ON DELETE CASCADE,
     FOREIGN KEY (horario_id) REFERENCES horario(horario_id) ON DELETE CASCADE
 );
@@ -100,7 +101,7 @@ CREATE TABLE cita (
     mascota_id BIGINT NOT NULL,
     horario_id BIGINT NOT NULL,
     veterinario_id BIGINT NOT NULL,
-    fecha DATETIME NOT NULL,
+    fecha DATE NOT NULL,
     tipo_cita VARCHAR(100),
     estado ENUM('Atendida', 'Confirmada', 'Cancelada') NOT NULL DEFAULT 'Confirmada',
     FOREIGN KEY (mascota_id) REFERENCES mascota(mascota_id) ON DELETE CASCADE,
