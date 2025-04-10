@@ -4,6 +4,8 @@ import com.gestVet.app.domain.dto.CitaDTO;
 import com.gestVet.app.domain.service.CitaService;
 import com.gestVet.app.exceptions.CitaModificacionNoPermitidaException;
 import com.gestVet.app.exceptions.CitaNotFoundException;
+import com.gestVet.app.exceptions.MascotaNotFoundException;
+import com.gestVet.app.exceptions.VeterinarioNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -28,18 +30,23 @@ public class CitaController {
     @Operation(summary = "Obtener todas las citas", description = "Retorna una lista de todas las citas registradas")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Lista de citas obtenida exitosamente"),
+            @ApiResponse(responseCode = "204", description = "No hay citas registradas"),
             @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
     @GetMapping("/all")
     public ResponseEntity<Iterable<CitaDTO>> getAllCitas() {
         Iterable<CitaDTO> citas = citaService.findAll();
-        return new ResponseEntity<>(citas, HttpStatus.OK);
+        return citas.iterator().hasNext()
+                ? ResponseEntity.ok(citas)
+                : ResponseEntity.noContent().build();
     }
 
     @Operation(summary = "Obtener cita por ID", description = "Retorna la cita correspondiente al ID proporcionado")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Cita encontrada"),
-            @ApiResponse(responseCode = "404", description = "Cita no encontrada")
+            @ApiResponse(responseCode = "200", description = "Cita encontrada con éxito"),
+            @ApiResponse(responseCode = "400", description = "Solicitud inválida - Datos proporcionados incorrectos"),
+            @ApiResponse(responseCode = "404", description = "Cita no encontrada"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
     @GetMapping("/{id}")
     public ResponseEntity<CitaDTO> getCitaById(
@@ -53,7 +60,8 @@ public class CitaController {
     @Operation(summary = "Registrar nueva cita", description = "Crea una nueva cita en el sistema")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Cita creada exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos de cita inválidos")
+            @ApiResponse(responseCode = "400", description = "Solicitud inválida - Datos proporcionados incorrectos"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
     @PostMapping("/save")
     public ResponseEntity<CitaDTO> createCita(
@@ -71,7 +79,8 @@ public class CitaController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Estado de cita actualizado exitosamente"),
             @ApiResponse(responseCode = "400", description = "Modificación no permitida"),
-            @ApiResponse(responseCode = "404", description = "Cita no encontrada")
+            @ApiResponse(responseCode = "404", description = "Cita no encontrada"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
     @PutMapping("/update/{id}")
     public ResponseEntity<CitaDTO> updateEstado(
@@ -93,7 +102,9 @@ public class CitaController {
     @Operation(summary = "Cancelar cita", description = "Cancela una cita existente")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Cita cancelada exitosamente"),
-            @ApiResponse(responseCode = "404", description = "Cita no encontrada")
+            @ApiResponse(responseCode = "400", description = "Solicitud inválida - Datos proporcionados incorrectos"),
+            @ApiResponse(responseCode = "404", description = "Cita no encontrada"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
     @PutMapping("/cancel/{id}")
     public ResponseEntity<String> cancelarCita(
@@ -113,6 +124,7 @@ public class CitaController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Citas encontradas"),
             @ApiResponse(responseCode = "204", description = "No hay citas para el veterinario"),
+            @ApiResponse(responseCode = "400", description = "Solicitud inválida - Datos proporcionados incorrectos"),
             @ApiResponse(responseCode = "404", description = "Veterinario no encontrado"),
             @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
@@ -120,11 +132,14 @@ public class CitaController {
     public ResponseEntity<?> getByVeterinario(
             @Parameter(description = "ID válido del veterinario", required = true)
             @PathVariable Long veterinarioId) {
+        try{
             Iterable<CitaDTO> citas = citaService.findByVeterinarioId(veterinarioId);
             return citas.iterator().hasNext()
                     ? ResponseEntity.ok(citas)
                     : ResponseEntity.noContent().build();
-
+        } catch (VeterinarioNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Consultar citas por mascota
@@ -132,6 +147,7 @@ public class CitaController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Citas encontradas"),
             @ApiResponse(responseCode = "204", description = "No hay citas para la mascota"),
+            @ApiResponse(responseCode = "400", description = "Solicitud inválida - Datos proporcionados incorrectos"),
             @ApiResponse(responseCode = "404", description = "Mascota no encontrada"),
             @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
@@ -139,12 +155,14 @@ public class CitaController {
     public ResponseEntity<?> getByMascota(
             @Parameter(description = "ID válido de la mascota", required = true)
             @PathVariable Long mascotaId) {
-
+        try{
             Iterable<CitaDTO> citas = citaService.findByMascotaId(mascotaId);
             return citas.iterator().hasNext()
                     ? ResponseEntity.ok(citas)
                     : ResponseEntity.noContent().build();
-
+        } catch(MascotaNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Consultar citas por fecha
@@ -157,7 +175,7 @@ public class CitaController {
     })
     @GetMapping("/fecha")
     public ResponseEntity<?> getByFecha(
-            @Parameter(description = "Fecha en formato ISO (yyyy-MM-dd'T'HH:mm:ss)", example = "2023-12-31T14:30:00")
+            @Parameter(description = "Fecha en formato ISO (yyyy-MM-dd)", example = "2025-12-31")
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate fecha) {
         Iterable<CitaDTO> citas = citaService.findByFecha(fecha);
         return citas.iterator().hasNext()
@@ -170,7 +188,7 @@ public class CitaController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Citas encontradas"),
             @ApiResponse(responseCode = "204", description = "No hay citas con este estado"),
-            @ApiResponse(responseCode = "400", description = "Estado no válido"),
+            @ApiResponse(responseCode = "400", description = "Estado de la cita no válido"),
             @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
     @GetMapping("/estado/{estado}")
@@ -178,7 +196,7 @@ public class CitaController {
             @Parameter(description = "Estado de la cita", required = true)
             @PathVariable String estado) {
         if (!List.of("Atendida", "Confirmada", "Cancelada").contains(estado)) {
-            return ResponseEntity.badRequest().body("Estado no válido. Valores permitidos: Atendida, Confirmada, Cancelada");
+            return ResponseEntity.badRequest().body("Error: Estado no válido. Valores permitidos: Atendida, Confirmada, Cancelada");
         }
         Iterable<CitaDTO> citas = citaService.findByEstado(estado);
         return citas.iterator().hasNext()

@@ -4,6 +4,8 @@ import com.gestVet.app.domain.dto.CitaDTO;
 import com.gestVet.app.domain.repository.CitaRepository;
 import com.gestVet.app.exceptions.CitaModificacionNoPermitidaException;
 import com.gestVet.app.exceptions.CitaNotFoundException;
+import com.gestVet.app.exceptions.MascotaNotFoundException;
+import com.gestVet.app.exceptions.VeterinarioNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class CitaService {
 
     @Autowired
     private CitaRepository citaRepository;
+
+    @Autowired
+    private VeterinarioService veterinarioService;
+
+    @Autowired MascotaService mascotaService;
 
     // Consultar todas las citas
     public Iterable<CitaDTO> findAll() {
@@ -63,12 +70,18 @@ public class CitaService {
     }
 
     // Consultar Citas por veterinario
-    public Iterable<CitaDTO> findByVeterinarioId(Long id){
+    public Iterable<CitaDTO> findByVeterinarioId(Long id) {
+        if(!veterinarioService.existsById(id)){
+            throw new VeterinarioNotFoundException();
+        }
         return citaRepository.findByVeterinarioId(id);
     }
 
     // Consultar Citas por mascota
     public Iterable<CitaDTO> findByMascotaId(Long id) {
+        if(!mascotaService.existsById(id)){
+            throw new MascotaNotFoundException();
+        }
         return citaRepository.findByMascotaId(id);
     }
 
