@@ -3,6 +3,7 @@ package com.gestVet.app.domain.service;
 import com.gestVet.app.domain.dto.MascotaDTO;
 import com.gestVet.app.domain.repository.MascotaRepository;
 import com.gestVet.app.domain.repository.ClienteRepository;
+import com.gestVet.app.exceptions.PropietarioNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +36,7 @@ public class MascotaService {
     @Transactional
     public MascotaDTO save(MascotaDTO mascotaDTO) {
         if (!clienteRepository.existsById(mascotaDTO.getPropietarioId())) {
-            throw new IllegalArgumentException("El ID del propietario no existe");
+            throw new PropietarioNotFoundException();
         }
         return mascotaRepository.save(mascotaDTO);
     }
@@ -50,6 +51,10 @@ public class MascotaService {
 
     @Transactional
     public void delete(Long id) {
+        if(!mascotaRepository.existsById(id)){
+            throw new IllegalArgumentException("Mascota no encontrada");
+        }
+        System.out.println(mascotaRepository.existsByMascotaIdAndCitasIsNotEmpty(id));
         if (mascotaRepository.existsByMascotaIdAndCitasIsNotEmpty(id)) {
             throw new IllegalStateException("No se puede eliminar: La mascota tiene citas asociadas");
         }

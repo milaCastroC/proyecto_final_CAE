@@ -82,6 +82,6 @@ public class MascotaRepositoryImpl implements MascotaRepository {
 
     @Override
     public boolean existsByMascotaIdAndCitasIsNotEmpty(Long mascotaId) {
-        return mascotaCrudRepository.existsByMascotaIdAndCitasIsNotEmpty(mascotaId);
+        return mascotaCrudRepository.existsByMascotaIdAndCitasIsNotEmpty(mascotaId) > 0;
     }
 }

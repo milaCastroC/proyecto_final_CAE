@@ -2,6 +2,7 @@ package com.gestVet.app.web.controllers;
 
 import com.gestVet.app.domain.dto.MascotaDTO;
 import com.gestVet.app.domain.service.MascotaService;
+import com.gestVet.app.exceptions.PropietarioNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -100,8 +101,13 @@ public class MascotaController {
             );
         } catch (IllegalArgumentException e) {
             throw new ResponseStatusException(
-                HttpStatus.BAD_REQUEST, 
-                "Datos inválidos: " + e.getMessage()
+                    HttpStatus.BAD_REQUEST,
+                    "Datos inválidos: " + e.getMessage()
+            );
+        } catch (PropietarioNotFoundException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Datos inválidos: " + e.getMessage()
             );
         } catch (Exception e) {
             throw new ResponseStatusException(
