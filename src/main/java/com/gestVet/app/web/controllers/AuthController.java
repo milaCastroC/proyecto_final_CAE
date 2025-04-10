@@ -11,11 +11,11 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -37,7 +37,7 @@ public class AuthController {
             @ApiResponse(responseCode = "503", description = "Servicio no disponible - El servidor está en mantenimiento o sobrecargado")
     })
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody @Valid LoginRequestDTO request) {
+    public ResponseEntity<?> login(@Valid @RequestBody  LoginRequestDTO request) {
         try {
             LoginResponseDTO response = usuarioService.login(request);
             return ResponseEntity.ok(response);
@@ -49,5 +49,14 @@ public class AuthController {
                             "message", e.getMessage()
                     ));
         }
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException ex) {
+        Map<String, String> errores = new HashMap<>();
+        for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+            errores.put(error.getField(), error.getDefaultMessage());
+        }
+        return ResponseEntity.badRequest().body(errores);
     }
 }

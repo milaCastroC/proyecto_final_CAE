@@ -6,11 +6,16 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -78,15 +83,24 @@ public class AdministradorController {
             @ApiResponse(responseCode = "503", description = "Servicio no disponible - El servidor está en mantenimiento o sobrecargado")
     })
     @PostMapping("/save")
-    public ResponseEntity<?> createAdministrador(@RequestBody AdministradorDTO administradorDTO) {
+    public ResponseEntity<?> createAdministrador(@Valid @RequestBody AdministradorDTO administradorDTO) {
         try {
             AdministradorDTO nuevoAdmin = administradorService.save(administradorDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(nuevoAdmin);
-        } catch (IllegalStateException e) {
+        } catch (IllegalStateException | IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException ex) {
+        Map<String, String> errores = new HashMap<>();
+        for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+            errores.put(error.getField(), error.getDefaultMessage());
+        }
+        return ResponseEntity.badRequest().body(errores);
     }
 
     //Actualizar el administrador por Id
@@ -109,7 +123,7 @@ public class AdministradorController {
         try {
             AdministradorDTO adminActualizado = administradorService.update(id, administradorDTO);
             return ResponseEntity.ok(adminActualizado);
-        } catch (IllegalStateException e) {
+        } catch (IllegalStateException | IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();

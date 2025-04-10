@@ -86,22 +86,10 @@ public class AdministradorService {
         return administradorRepository.delete(id);
     }
 
-    private void validarExistenciaUsuario(Long usuarioId) {
-        if (!usuarioRepository.existsById(usuarioId)) {
-            throw new IllegalArgumentException("El usuario especificado no existe");
-        }
-    }
-
     private void validarUsuarioUnico(Long usuarioId) {
         if (administradorRepository.existsByUsuarioId(usuarioId)) {
             throw new IllegalStateException("Este usuario ya está asignado a otro administrador");
         }
     }
 
-    private void validarUsuarioUnicoParaActualizacion(Long adminId, Long usuarioId) {
-        Optional<AdministradorDTO> adminExistente = administradorRepository.findByUsuarioId(usuarioId);
-        if (adminExistente.isPresent() && !adminExistente.get().getPersonaId().equals(adminId)) {
-            throw new IllegalStateException("Este usuario ya está asignado a otro administrador");
-        }
-    }
 }
