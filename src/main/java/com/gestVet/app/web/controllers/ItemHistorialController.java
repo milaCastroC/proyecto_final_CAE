@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping("/api/historial")
 @RequiredArgsConstructor
 @Tag(name = "ItemHistorial Controller", description = "API para gestionar los registros de historial clínico de mascotas")

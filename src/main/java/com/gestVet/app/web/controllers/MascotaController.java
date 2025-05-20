@@ -22,6 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping("/mascotas")
 @Tag(name = "Mascotas", description = "API para gestión de mascotas")
 public class MascotaController {
