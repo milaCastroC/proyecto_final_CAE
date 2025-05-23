@@ -205,31 +205,31 @@ public class CitaController {
                 : ResponseEntity.noContent().build();
     }
 
-//    // Consultar citas por veterinario, fecha y estado
-//    @Operation(summary = "Filtrar citas combinado", description = "Retorna citas por veterinario, fecha y estado")
-//    @ApiResponses(value = {
-//            @ApiResponse(responseCode = "200", description = "Citas encontradas"),
-//            @ApiResponse(responseCode = "204", description = "No hay citas con estos criterios"),
-//            @ApiResponse(responseCode = "400", description = "Parámetros inválidos"),
-//            @ApiResponse(responseCode = "404", description = "Veterinario no encontrado"),
-//            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
-//    })
-//    @GetMapping("/combinado")
-//    public ResponseEntity<?> getByVeterinarioFechaEstado(
-//            @Parameter(description = "ID válido del veterinario", required = true)
-//            @RequestParam Long veterinarioId,
-//            @Parameter(description = "Fecha en formato ISO (yyyy-MM-dd)", example = "2023-12-31")
-//            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha,
-//            @Parameter(description = "Estado de la cita", required = true)
-//            @RequestParam String estado) {
-//
-//            if (!List.of("Atendida", "Confirmada", "Cancelada").contains(estado)) {
-//                return ResponseEntity.badRequest().body("Estado no válido");
-//            }
-//            Iterable<CitaDTO> citas = citaService.findByVeterinarioIdAndFechaAndEstado(veterinarioId, fecha, estado);
-//            return citas.iterator().hasNext()
-//                    ? ResponseEntity.ok(citas)
-//                    : ResponseEntity.noContent().build();
-//    }
+   // Consultar citas por veterinario, fecha y estado
+   @Operation(summary = "Filtrar citas combinado", description = "Retorna citas por veterinario, fecha y estado")
+   @ApiResponses(value = {
+           @ApiResponse(responseCode = "200", description = "Citas encontradas"),
+           @ApiResponse(responseCode = "204", description = "No hay citas con estos criterios"),
+           @ApiResponse(responseCode = "400", description = "Parámetros inválidos"),
+           @ApiResponse(responseCode = "404", description = "Veterinario no encontrado"),
+           @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+   })
+   @GetMapping("/combinado")
+   public ResponseEntity<?> getByVeterinarioFechaEstado(
+           @Parameter(description = "ID válido del veterinario", required = true)
+           @RequestParam Long veterinarioId,
+           @Parameter(description = "Fecha en formato ISO (yyyy-MM-dd)", example = "2023-12-31")
+           @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha,
+           @Parameter(description = "Estado de la cita", required = true)
+           @RequestParam String estado) {
+
+           if (!List.of("Atendida", "Confirmada", "Cancelada").contains(estado)) {
+               return ResponseEntity.badRequest().body("Estado no válido");
+           }
+           Iterable<CitaDTO> citas = citaService.findByVeterinarioIdAndFechaAndEstado(veterinarioId, fecha, estado);
+           return citas.iterator().hasNext()
+                   ? ResponseEntity.ok(citas)
+                   : ResponseEntity.noContent().build();
+   }
 
 }
