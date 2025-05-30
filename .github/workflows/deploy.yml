@@ -1,0 +1,23 @@
+name: CI/CD con Docker y GitHub Actions - Backend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v3
+
+    - name: Loguearse en DockerHub
+      run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+    - name: Construir y subir imagen del backend
+      run: |
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/pawtner-backend -f Dockerfile .
+        docker tag ${{ secrets.DOCKERHUB_USERNAME }}/pawtner-backend ${{ secrets.DOCKERHUB_USERNAME }}/pawtner-backend:latest
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/pawtner-backend:latest
